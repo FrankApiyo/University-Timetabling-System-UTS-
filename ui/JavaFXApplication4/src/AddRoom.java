@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import com.gluonhq.charm.glisten.control.TextField;   
 import javafx.fxml.FXML;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 
 
 /**
@@ -18,9 +20,17 @@ import javafx.fxml.FXML;
  */
 public class AddRoom implements Initializable{
     
+    @FXML private RadioButton isLabYes;
+    @FXML private RadioButton isLabNo;
+    @FXML private RadioButton disYes;
+    @FXML private RadioButton disNo;
+    
+    
+    private ToggleGroup isLabToggle;
+    private ToggleGroup disToggle;
     
     public void backButt(ActionEvent event) throws IOException{
-        Parent backBut = FXMLLoader.load(getClass().getResource("home.fxml"));
+        Parent backBut = FXMLLoader.load(getClass().getResource("manageTimetable.fxml"));
         Scene backButScene = new Scene(backBut);
         
         Stage addRoomWindow = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -31,6 +41,14 @@ public class AddRoom implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
+        isLabToggle = new ToggleGroup();
+        isLabNo.setToggleGroup(isLabToggle);
+        isLabYes.setToggleGroup(isLabToggle);
+        
+        disToggle  = new ToggleGroup();
+        disNo.setToggleGroup(disToggle);
+        disYes.setToggleGroup(disToggle);
 
     }
 }

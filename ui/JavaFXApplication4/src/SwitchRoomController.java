@@ -23,7 +23,7 @@ public class SwitchRoomController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        dayColumn.setCellValueFactory(new PropertyValueFactory<Day, String> ("Day"));
+        dayColumn.setCellValueFactory(new PropertyValueFactory<> ("Day"));
         
         timetable.setItems(getDays()); 
     }

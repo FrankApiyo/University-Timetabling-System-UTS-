@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,38 +18,61 @@ import javafx.stage.Stage;
 public class Controller implements Initializable {
 
     @FXML
-    void OncheckReqClick(ActionEvent event) {
+    void OnReqRequirements(ActionEvent event) throws IOException {
+        Parent reqReqBut = FXMLLoader.load(getClass().getResource("reqRequest.fxml"));
+        Scene reqReqScene = new Scene(reqReqBut);
 
+        Stage reqReqWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        reqReqWindow.setScene(reqReqScene);
+        reqReqWindow.show();
     }
 
     @FXML
     void OnDisplayTT(ActionEvent event) {
 
     }
-
+/**
+ * 
+ * @param event
+ * @throws IOException 
+ */
     @FXML
-    void OnGenerateTT(ActionEvent event) {
+    void OnGenerateTT(ActionEvent event)throws IOException {
+        Parent genTTBut = FXMLLoader.load(getClass().getResource("generateTimetable.fxml"));
+        Scene genTTScene = new Scene(genTTBut);
 
+        Stage genTTWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        genTTWindow.setScene(genTTScene);
+        genTTWindow.show();
     }
-
+    /**
+     * This Button sends user to the manage Timetable
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     void OnManageTT(ActionEvent event) throws IOException {
         Parent manageTTBut = FXMLLoader.load(getClass().getResource("manageTimetable.fxml"));
         Scene manageTTScene = new Scene(manageTTBut);
 
-        Stage addRoomWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        addRoomWindow.setScene(manageTTScene);
-        addRoomWindow.show();
+        Stage manageTWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        manageTWindow.setScene(manageTTScene);
+        manageTWindow.show();
     }
 
     @FXML
-    void OnReqRequirements(ActionEvent event) {
+    void OncheckReqClick(ActionEvent event) {
 
     }
 
     @FXML
-    void OnSendTT(ActionEvent event) {
+    void OnSendTT(ActionEvent event) throws IOException {
+        Parent sendTTBut = FXMLLoader.load(getClass().getResource("sendTT.fxml"));
+        Scene sendTTScene = new Scene(sendTTBut);
 
+        Stage sendTTWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        sendTTWindow.setScene(sendTTScene);
+        sendTTWindow.show();
     }
 
     @FXML
@@ -65,8 +83,8 @@ public class Controller implements Initializable {
     /**
      * When this button is pushed it changes scene to Add Rooms
      *
-     * @param event
-     * @throws java.io.IOException
+     * @param url
+     * @param rb
      */
     
     @Override
