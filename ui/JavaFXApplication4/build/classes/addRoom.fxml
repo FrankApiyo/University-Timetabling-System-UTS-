@@ -15,8 +15,8 @@
             <Label layoutX="97.0" layoutY="126.0" text="ROOM CAPACITY" />
             <Label layoutX="97.0" layoutY="176.0" text="DISABILITY FRIENDLINESS" />
             <Label layoutX="97.0" layoutY="233.0" text="IS LAB" />
-            <TextField layoutX="320.0" layoutY="73.0" promptText="Room Name" />
-            <TextField layoutX="320.0" layoutY="122.0" promptText="Room Capacity" />
+            <TextField fx:id="roomName" layoutX="320.0" layoutY="73.0" promptText="Room Name" />
+            <TextField fx:id="capacity" layoutX="320.0" layoutY="122.0" promptText="Room Capacity" />
             <RadioButton fx:id="disYes" layoutX="320.0" layoutY="176.0" mnemonicParsing="false" text="YES" />
             <RadioButton fx:id="isLabYes" layoutX="320.0" layoutY="233.0" mnemonicParsing="false" text="YES" />
             <RadioButton fx:id="disNo" layoutX="429.0" layoutY="176.0" mnemonicParsing="false" text="NO" />

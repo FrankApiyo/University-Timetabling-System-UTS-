@@ -56,10 +56,10 @@
             <JFXBadge layoutX="142.0" layoutY="150.0" />
             <Button layoutX="444.0" layoutY="130.0" mnemonicParsing="false" onAction="#OnReqRequirements" prefHeight="65.0" prefWidth="142.0" style="-fx-background-color: #4caf50;" text="REQUEST REQUIREMENTS" />
             <Button layoutX="444.0" layoutY="33.0" mnemonicParsing="false" onAction="#OnGenerateTT" prefHeight="65.0" prefWidth="142.0" style="-fx-background-color: #4caf50;" text="GENERATE TIMETABLE" />
-            <Button layoutX="59.0" layoutY="130.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="142.0" style="-fx-background-color: #4caf50;" text="DISPLAY TIMETABLE" />
+            <Button layoutX="59.0" layoutY="130.0" mnemonicParsing="false" onAction="#OnDisplayTT" prefHeight="65.0" prefWidth="142.0" style="-fx-background-color: #4caf50;" text="DISPLAY TIMETABLE" />
             <Button layoutX="444.0" layoutY="229.0" mnemonicParsing="false" onAction="#OnSendTT" prefHeight="65.0" prefWidth="142.0" style="-fx-background-color: #4caf50;" text="SEND TIMETABLE" />
             <Button layoutX="59.0" layoutY="229.0" mnemonicParsing="false" onAction="#OnManageTT" prefHeight="65.0" prefWidth="142.0" style="-fx-background-color: #4caf50;" text="MANAGE TIMETABLE" />
-            <Button layoutX="287.0" layoutY="302.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="66.0" style="-fx-background-color: #ff5252;" text="LOG OUT" />
+            <Button layoutX="287.0" layoutY="302.0" mnemonicParsing="false" onAction="#OnLogOut" prefHeight="44.0" prefWidth="66.0" style="-fx-background-color: #ff5252;" text="LOG OUT" textFill="WHITE" />
       </children>
     </AnchorPane>
   </children>

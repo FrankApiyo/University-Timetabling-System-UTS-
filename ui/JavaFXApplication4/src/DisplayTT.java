@@ -1,5 +1,4 @@
 
-import timetable.Day;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,26 +15,30 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import timetable.Day;
 
-public class SwitchRoomController implements Initializable {
+/**
+ *
+ * @author brianbett
+ */
+public class DisplayTT implements Initializable {
 
     @FXML
     private TableView<Day> timetable;
 
     @FXML
     private TableColumn<Day, String> dayColumn;
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        dayColumn.setCellValueFactory(new PropertyValueFactory<Day , String>("Day"));
+        dayColumn.setCellValueFactory(new PropertyValueFactory<Day, String>("Day"));
 
         timetable.getItems().setAll(getDays());
     }
 
     public void backButt(ActionEvent event) throws IOException {
-        Parent backBut = FXMLLoader.load(getClass().getResource("manageTimetable.fxml"));
+        Parent backBut = FXMLLoader.load(getClass().getResource("home.fxml"));
         Scene backButScene = new Scene(backBut);
 
         Stage addRoomWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();

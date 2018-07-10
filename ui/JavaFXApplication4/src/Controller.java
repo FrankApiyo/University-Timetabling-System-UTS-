@@ -28,7 +28,13 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void OnDisplayTT(ActionEvent event) {
+    void OnDisplayTT(ActionEvent event) throws IOException{
+        Parent genTTBut = FXMLLoader.load(getClass().getResource("displayTT.fxml"));
+        Scene genTTScene = new Scene(genTTBut);
+
+        Stage genTTWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        genTTWindow.setScene(genTTScene);
+        genTTWindow.show();
 
     }
 /**
@@ -77,6 +83,8 @@ public class Controller implements Initializable {
 
     @FXML
     void OnLogOut(ActionEvent event) {
+        //Stage stage = (Stage) closeButton.getScene().getWindow();
+        //stage.close();
 
     }
 
@@ -90,6 +98,8 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Stage stage = new Stage();
+        stage.setTitle("Home");
     }
 
 }

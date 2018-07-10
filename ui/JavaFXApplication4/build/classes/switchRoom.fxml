@@ -12,7 +12,7 @@
 
   <children>
 
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="459.0" prefWidth="883.0" style="-fx-background-color: #ffffff;" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="459.0" prefWidth="883.0" style="-fx-background-color: #C5E1A5;" VBox.vgrow="ALWAYS">
 
          <children>
 
@@ -66,7 +66,7 @@
 
             <Label layoutX="442.0" layoutY="359.0" text="Available Rooms" />
 
-            <Button layoutX="154.0" layoutY="412.0" mnemonicParsing="false" onAction="#backButt" text="CANCEL" />
+            <Button layoutX="154.0" layoutY="412.0" mnemonicParsing="false" onAction="#backButt" style="-fx-background-color: #ff5252;" text="CANCEL" textFill="WHITE" />
 
             <Button layoutX="601.0" layoutY="412.0" mnemonicParsing="false" text="OKAY" />
 

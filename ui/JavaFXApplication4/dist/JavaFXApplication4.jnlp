@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="JavaFXApplication4.jar" size="13350" download="eager" />
+    <jar href="JavaFXApplication4.jar" size="22212" download="eager" />
     <jar href="lib\charm-glisten-4.4.1.jar" size="1040787" download="eager" />
     <jar href="lib\jfoenix.jar" size="2211776" download="eager" />
   </resources>

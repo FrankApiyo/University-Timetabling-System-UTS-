@@ -50,4 +50,13 @@ public class ManageTT implements Initializable{
         removeRoomWindow.setScene(removeButScene);
         removeRoomWindow.show();
     }
+    
+     public void okButt(ActionEvent event) throws IOException {
+        Parent okBut = FXMLLoader.load(getClass().getResource("displayTT.fxml"));
+        Scene removeButScene = new Scene(okBut);
+
+        Stage removeRoomWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        removeRoomWindow.setScene(removeButScene);
+        removeRoomWindow.show();
+    }
 }

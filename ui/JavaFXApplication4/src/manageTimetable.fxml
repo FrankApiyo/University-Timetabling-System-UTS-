@@ -12,7 +12,7 @@
          <children>
             <SplitPane prefHeight="421.0" prefWidth="640.0" AnchorPane.rightAnchor="0.0">
               <items>
-                <AnchorPane accessibleRole="BUTTON" minHeight="0.0" minWidth="0.0" prefHeight="420.0" prefWidth="497.0">
+                <AnchorPane accessibleRole="BUTTON" minHeight="0.0" minWidth="0.0" prefHeight="420.0" prefWidth="497.0" style="-fx-background-color: #C5E1A5;">
                      <children>
                         <Button layoutX="58.0" layoutY="368.0" mnemonicParsing="false" onAction="#backButt" style="-fx-background-color: #FF5252;" text="BACK" textFill="WHITE">
                            <font>
