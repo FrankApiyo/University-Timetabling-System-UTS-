@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="282.0" prefWidth="484.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RemoveRoom">
+<VBox prefHeight="282.0" prefWidth="484.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RemoveRoom">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="596.0" style="-fx-background-color: #C5E1A5;" VBox.vgrow="ALWAYS">
          <children>
             <Button layoutX="52.0" layoutY="136.0" mnemonicParsing="false" onAction="#backButt" prefHeight="42.0" prefWidth="121.0" style="-fx-background-color: #FF5252;" text="CANCEL" textFill="WHITE" />
-            <Button layoutX="309.0" layoutY="136.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="121.0" text="REMOVE" />
+            <Button layoutX="309.0" layoutY="136.0" mnemonicParsing="false" onAction="#remove" prefHeight="42.0" prefWidth="121.0" text="REMOVE" />
             <Label layoutX="76.0" layoutY="50.0" text="ROOM NAME" />
-            <ComboBox editable="true" layoutX="197.0" layoutY="46.0" prefWidth="150.0" promptText="-" style="-fx-background-color: #FFFFFF;">
+            <ComboBox fx:id="comboBox" editable="true" layoutX="197.0" layoutY="46.0" prefWidth="150.0" promptText="-" style="-fx-background-color: #FFFFFF;">
                <effect>
                   <ColorAdjust brightness="-0.36" />
                </effect>

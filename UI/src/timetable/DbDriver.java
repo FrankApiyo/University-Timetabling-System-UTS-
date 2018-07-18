@@ -18,7 +18,13 @@ public class DbDriver {
         }catch(SQLException ex){
             ex.printStackTrace();
         }catch(ClassNotFoundException ex){
-            ex.printStackTrace();
+            //ex.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("database error");
+            alert.setContentText(connection == null ? "connection is null": "i dont see problems");
+
+            alert.showAndWait();
         }
 
         return connection;

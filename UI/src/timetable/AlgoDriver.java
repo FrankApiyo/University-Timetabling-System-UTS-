@@ -1,155 +1,13 @@
 package timetable;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 
-public class AlgoDriver {//This class is ment to create the room allocating algorithm
-    
-//     private boolean isRoomOccupied(Room tempRoom, ArrayList<Room> rooms2) {
-//
-//        for (Room room : rooms2) {
-//            if (room.equals(tempRoom)) {
-//                ArrayList<Day> weekdays = room.getDays();
-//                Iterator<Day> daysIterator = weekdays.iterator();
-//
-//                while (daysIterator.hasNext()) {
-//                    Day day = daysIterator.next();
-//                    ArrayList<Slot> timeslots = day.getSlot();
-//                    Iterator<Slot> timeslotIterator = timeslots.iterator();
-//
-//                    while (timeslotIterator.hasNext()) {
-//                        Slot lecture = timeslotIterator.next();
-//
-//                        if (lecture.getLecture() == null) {
-//                            return false;
-//                        }
-//                    }
-//                }
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
+public class AlgoDriver {//This class is meant to create the room allocating algorithm
 
-    public static void main(String[] args) {
-        RoomChart chart = new RoomChart();
-        Collections.shuffle(chart.getList());
-        ArrayList<Room> roomList = chart.getList();
-
-        //populate the rooom chart with rooms.
-        //rooms int GO all have a capacity of 25
-        for (int i = 1; i <= 25; i++) {
-            roomList.add(new Room("GO" + i, 25));
-        }
-
-        //rooms in ED all have a capacity of 60
-        for (int i = 1; i <= 25; i++) {
-            roomList.add(new Room("ED" + i, 60));
-        }
-
-        //rooms in TK have a capacity of 80
-        for (int i = 1; i <= 25; i++) {
-            roomList.add(new Room("TK" + i, 80));
-        }
-
-        //create class list and populate
-        ArrayList<Clss> classList = new ArrayList<>();
-        classList.add(new Clss(new Lecturer("JFK"), new Unit("CS101"), new Course("COMPUTER SCIENCE", 1, 80)));
-        classList.add(new Clss(new Lecturer("JFK"), new Unit("CS102"), new Course("COMPUTER SCIENCE", 1, 80)));
-        classList.add(new Clss(new Lecturer("JFK"), new Unit("CS201"), new Course("COMPUTER SCIENCE", 2, 75)));
-        classList.add(new Clss(new Lecturer("JFK"), new Unit("CS301"), new Course("COMPUTER SCIENCE", 3, 60)));
-        classList.add(new Clss(new Lecturer("Odiyo"), new Unit("CS102"), new Course("COMPUTER SCIENCE", 1, 80)));
-        classList.add(new Clss(new Lecturer("Odiyo"), new Unit("CS103"), new Course("COMPUTER SCIENCE", 1, 80)));
-        classList.add(new Clss(new Lecturer("Odiyo"), new Unit("CS204"), new Course("COMPUTER SCIENCE", 2, 75)));
-        classList.add(new Clss(new Lecturer("Odiyo"), new Unit("CS307"), new Course("COMPUTER SCIENCE", 3, 60)));
-        classList.add(new Clss(new Lecturer("Mungai"), new Unit("MATH101"), new Course("COMPUTER SCIENCE", 1, 80)));
-        classList.add(new Clss(new Lecturer("Mungai"), new Unit("MATH121"), new Course("COMPUTER SCIENCE", 1, 80)));
-        classList.add(new Clss(new Lecturer("Mungai"), new Unit("MATH242"), new Course("COMPUTER SCIENCE", 2, 75)));
-        classList.add(new Clss(new Lecturer("Mungai"), new Unit("MATH340"), new Course("COMPUTER SCIENCE", 3, 60)));
-        classList.add(new Clss(new Lecturer("Odiyo"), new Unit("PHY101"), new Course("COMPUTER SCIENCE", 1, 80)));
-        classList.add(new Clss(new Lecturer("Odiyo"), new Unit("PHY102"), new Course("COMPUTER SCIENCE", 1, 80)));
-        classList.add(new Clss(new Lecturer("Odiyo"), new Unit("PHY201"), new Course("COMPUTER SCIENCE", 2, 75)));
-        classList.add(new Clss(new Lecturer("Odiyo"), new Unit("PHY301"), new Course("COMPUTER SCIENCE", 3, 60)));
-        classList.add(new Clss(new Lecturer("JFK"), new Unit("CS101"), new Course("ELECTRICAL E", 1, 25)));
-        classList.add(new Clss(new Lecturer("JFK"), new Unit("CS102"), new Course("ELECTRICAL E", 1, 25)));
-        classList.add(new Clss(new Lecturer("JFK"), new Unit("CS201"), new Course("ELECTRICAL E", 2, 20)));
-        classList.add(new Clss(new Lecturer("JFK"), new Unit("CS301"), new Course("ELECTRICAL E", 3, 20)));
-        classList.add(new Clss(new Lecturer("Odiyo"), new Unit("TECH102"), new Course("ELECTRICAL E", 1, 25)));
-        classList.add(new Clss(new Lecturer("Odiyo"), new Unit("TECH103"), new Course("ELECTRICAL E", 1, 25)));
-        classList.add(new Clss(new Lecturer("Odiyo"), new Unit("TECH204"), new Course("ELECTRICAL E", 2, 20)));
-        classList.add(new Clss(new Lecturer("Odiyo"), new Unit("TECH307"), new Course("ELECTRICAL E", 3, 20)));
-        classList.add(new Clss(new Lecturer("Mungai"), new Unit("MATH101"), new Course("ELECTRICAL E", 1, 25)));
-        classList.add(new Clss(new Lecturer("Mungai"), new Unit("MATH121"), new Course("ELECTRICAL E", 1, 25)));
-        classList.add(new Clss(new Lecturer("Mungai"), new Unit("MATH242"), new Course("ELECTRICAL E", 2, 20)));
-        classList.add(new Clss(new Lecturer("Mungai"), new Unit("MATH340"), new Course("ELECTRICAL E", 3, 20)));
-        classList.add(new Clss(new Lecturer("Odiyo"), new Unit("PHY101"), new Course("ELECTRICAL E", 1, 25)));
-        classList.add(new Clss(new Lecturer("Odiyo"), new Unit("PHY102"), new Course("ELECTRICAL E", 1, 25)));
-        classList.add(new Clss(new Lecturer("Odiyo"), new Unit("PHY201"), new Course("ELECTRICAL E", 2, 20)));
-        classList.add(new Clss(new Lecturer("Odiyo"), new Unit("PHY301"), new Course("ELECTRICAL E", 3, 20)));
-        classList.add(new Clss(new Lecturer("Omollo"), new Unit("LIFE101"), new Course("SOIL SCIENCE", 1, 50)));
-        classList.add(new Clss(new Lecturer("Omollo"), new Unit("LIFE102"), new Course("SOIL SCIENCE", 1, 50)));
-        classList.add(new Clss(new Lecturer("Omollo"), new Unit("LIFE201"), new Course("SOIL SCIENCE", 2, 70)));
-        classList.add(new Clss(new Lecturer("Omollo"), new Unit("LIFE301"), new Course("SOIL SCIENCE", 3, 70)));
-        classList.add(new Clss(new Lecturer("Nyachio"), new Unit("EL102"), new Course("SOIL SCIENCE", 1, 50)));
-        classList.add(new Clss(new Lecturer("Nyachio"), new Unit("EL103"), new Course("SOIL SCIENCE", 1, 50)));
-        classList.add(new Clss(new Lecturer("Nyachio"), new Unit("EL204"), new Course("SOIL SCIENCE", 2, 70)));
-        classList.add(new Clss(new Lecturer("Nyachio"), new Unit("EL307"), new Course("SOIL SCIENCE", 3, 70)));
-        classList.add(new Clss(new Lecturer("Tilder"), new Unit("ORG101"), new Course("SOIL SCIENCE", 1, 50)));
-        classList.add(new Clss(new Lecturer("Tilder"), new Unit("ORG121"), new Course("SOIL SCIENCE", 1, 50)));
-        classList.add(new Clss(new Lecturer("Tilder"), new Unit("ORG242"), new Course("SOIL SCIENCE", 2, 70)));
-        classList.add(new Clss(new Lecturer("Tilder"), new Unit("ORG340"), new Course("SOIL SCIENCE", 3, 70)));
-        classList.add(new Clss(new Lecturer("Ondiek"), new Unit("SOIL101"), new Course("SOIL SCIENCE", 1, 50)));
-        classList.add(new Clss(new Lecturer("Ondiek"), new Unit("SOIL102"), new Course("SOIL SCIENCE", 1, 50)));
-        classList.add(new Clss(new Lecturer("Ondiek"), new Unit("SOIL201"), new Course("SOIL SCIENCE", 2, 70)));
-        classList.add(new Clss(new Lecturer("Ondiek"), new Unit("SOIL301"), new Course("SOIL SCIENCE", 3, 70)));
-
-        /* THIS WAS A TEST AREA. ITS COMENTED OFF NOW. you can uncommnet it to see it run at your pleasure
-
-    -----------------------------------------------
-
-    //print out the list of rooms to see if the entry is correct.
-    System.out.println("THIS IS THE LIST OF ROOMS\n"+
-                       "-------------------------\n"+
-                       "NAME\r\t\tCAPACITY\n");
-    for(Room r: roomList)
-      System.out.println(r.getName()+"\r\t\t"+r.getCapacity());
-
-    //print out the list of classes to see if the entry is correct
-    System.out.println("THIS IS THE LIST OF CLASSES\n"+
-                       "---------------------------\n"+
-                       "lecturer\r\t\tunit\r\t\t\t\tcourse\r\t\t\t\t\t\t\tnumber");
-    for(Clss c : classList)
-      System.out.println(c.getL().getName()+"\r\t\t"+c.getU().getName()+"\r\t\t\t\t"+c.getC().getName()+"->year: "+c.getC().getYear()+"\r\t\t\t\t\t\t\t"+c.getC().getNumber());
-
-      ---------------------------------------------------
-
-         */
-        //now allocate rooms to classes starting from the most populous classes.
-        //go through roomchart allocating 2 slots per class
-        for (Clss c : classList) //assign a room-slot to each class in class list
-        {
-            
-            assignRoom(c, roomList);
-        }
-
-        //loop through rooms to see the allocated slots
-        System.out.println("DAY\r\t\tROOM\r\t\t\t\tSLOT1\r\t\t\t\t\t\tSLOT2\r\t\t\t\t\t\t\t\tSLOT3\r\t\t\t\t\t\t\t\t\t\tSLOT4\r\t\t\t\t\t\t\t\t\t\t\t\tSLOT5");
-        for (Room r : roomList)//loop through all rooms.
-        {
-            Clss[][] classesInRoom = r.getDays();
-            for (int i = 0; i < classesInRoom.length; i++) {//loop through all the days per class
-                System.out.print(i + "\r\t\t" + r.getName());
-                for (int j = 0; j < classesInRoom[i].length; j++) {//and loop through all the slots per day per class.
-                    //print the slots per room.
-                    System.out.print("\t\t" + "" + (classesInRoom[i][j] != null ? classesInRoom[i][j].getU().getName() : "null"));
-                }
-                System.out.println();
-            }
-            System.out.println("----------------------------------------------------");
-        }
+    public static void main(String[] args){
+        DbDriver dbDriver = new DbDriver();
+        dbDriver.addClass(new Clss(new Lecturer("Benjamin Odiyo"),new Unit("CS101"), new Course("CHINESE", 2, 70)));
     }
-
     private static void assignRoom(Clss c, ArrayList<Room> roomList) {
         for (int i = 0; i < 2; i++) {
             //this loop ensures that each class is assigned a room twice.
@@ -174,5 +32,12 @@ public class AlgoDriver {//This class is ment to create the room allocating algo
                 }
             }
         }
+    }
+    public static void generateTimeTable(){
+        //this method takes classes from the database and generates a roomchat using them
+        // step 1: get all classes and add to class list from db : written getClasses for this
+        // step 2: get all rooms and add to room list from db : written getRooms for this
+        // step 3: call assign room for every room
+        // step 4: add room chart to database *one table per room*.
     }
 }
