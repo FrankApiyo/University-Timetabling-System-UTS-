@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.1.30-MariaDB, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.22, for Linux (x86_64)
 --
 -- Host: localhost    Database: utsbase
 -- ------------------------------------------------------
--- Server version	10.1.30-MariaDB
+-- Server version	5.7.22-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,55 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `Class`
+--
+
+DROP TABLE IF EXISTS `Class`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Class` (
+  `unit_code` varchar(10) NOT NULL,
+  `lec_reg_no` varchar(16) NOT NULL,
+  `course_year` int(1) NOT NULL,
+  `course_name` varchar(30) NOT NULL,
+  PRIMARY KEY (`course_year`,`course_name`,`unit_code`,`lec_reg_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Class`
+--
+
+LOCK TABLES `Class` WRITE;
+/*!40000 ALTER TABLE `Class` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Class` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Course`
+--
+
+DROP TABLE IF EXISTS `Course`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Course` (
+  `name` varchar(30) NOT NULL,
+  `year` int(1) NOT NULL,
+  `number` int(11) DEFAULT NULL,
+  PRIMARY KEY (`name`,`year`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Course`
+--
+
+LOCK TABLES `Course` WRITE;
+/*!40000 ALTER TABLE `Course` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Course` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `DepFaculty`
@@ -129,7 +178,7 @@ CREATE TABLE `Room` (
   `boardType` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   `capacity` int(11) NOT NULL,
   `name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `location` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lab` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -228,4 +277,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-19 15:29:02
+-- Dump completed on 2018-07-18 21:04:49

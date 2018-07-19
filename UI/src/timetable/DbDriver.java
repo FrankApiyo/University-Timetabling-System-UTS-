@@ -22,7 +22,7 @@ public class DbDriver {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error");
             alert.setHeaderText("database error");
-            alert.setContentText(connection == null ? "connection is null": "i dont see problems");
+            alert.setContentText("couldn't connect to database. please contact support.");
 
             alert.showAndWait();
         }
