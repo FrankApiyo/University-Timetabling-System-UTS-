@@ -25,9 +25,13 @@ DROP TABLE IF EXISTS `Class`;
 CREATE TABLE `Class` (
   `unit_code` varchar(10) NOT NULL,
   `lec_reg_no` varchar(16) NOT NULL,
-  `course_year` int(1) NOT NULL,
-  `course_name` varchar(30) NOT NULL,
-  PRIMARY KEY (`course_year`,`course_name`,`unit_code`,`lec_reg_no`)
+  `course_code` varchar(30) NOT NULL,
+  PRIMARY KEY (`unit_code`,`lec_reg_no`,`course_code`),
+  KEY `course_code` (`course_code`),
+  KEY `lec_reg_no` (`lec_reg_no`),
+  CONSTRAINT `Class_ibfk_1` FOREIGN KEY (`course_code`) REFERENCES `Course` (`code`),
+  CONSTRAINT `Class_ibfk_2` FOREIGN KEY (`lec_reg_no`) REFERENCES `Lecturer` (`regNo`),
+  CONSTRAINT `Class_ibfk_3` FOREIGN KEY (`unit_code`) REFERENCES `Unit` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -51,7 +55,8 @@ CREATE TABLE `Course` (
   `name` varchar(30) NOT NULL,
   `year` int(1) NOT NULL,
   `number` int(11) DEFAULT NULL,
-  PRIMARY KEY (`name`,`year`)
+  `code` varchar(30) NOT NULL,
+  PRIMARY KEY (`code`,`name`,`year`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -72,10 +77,10 @@ DROP TABLE IF EXISTS `DepFaculty`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `DepFaculty` (
-  `department` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `faculty` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`department`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `department` varchar(150) NOT NULL,
+  `faculty` varchar(150) NOT NULL,
+  PRIMARY KEY (`department`,`faculty`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,14 +100,15 @@ DROP TABLE IF EXISTS `IEO`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `IEO` (
-  `department` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(70) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`phone`),
-  KEY `department` (`department`),
+  `department` varchar(150) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `phone` varchar(10) NOT NULL,
+  `fname` varchar(100) NOT NULL,
+  `lname` varchar(100) NOT NULL,
+  `password` varchar(10) NOT NULL,
+  PRIMARY KEY (`department`),
   CONSTRAINT `IEO_ibfk_1` FOREIGN KEY (`department`) REFERENCES `DepFaculty` (`department`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,32 +121,6 @@ LOCK TABLES `IEO` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `LecUnit`
---
-
-DROP TABLE IF EXISTS `LecUnit`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `LecUnit` (
-  `regNo` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `code` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`regNo`,`code`),
-  KEY `code` (`code`),
-  CONSTRAINT `LecUnit_ibfk_1` FOREIGN KEY (`regNo`) REFERENCES `Lecturer` (`regNo`),
-  CONSTRAINT `LecUnit_ibfk_2` FOREIGN KEY (`code`) REFERENCES `Unit` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `LecUnit`
---
-
-LOCK TABLES `LecUnit` WRITE;
-/*!40000 ALTER TABLE `LecUnit` DISABLE KEYS */;
-/*!40000 ALTER TABLE `LecUnit` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `Lecturer`
 --
 
@@ -148,13 +128,13 @@ DROP TABLE IF EXISTS `Lecturer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Lecturer` (
-  `department` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `regNo` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `regNo` varchar(16) NOT NULL,
+  `department` varchar(150) NOT NULL,
+  `name` varchar(50) NOT NULL,
   PRIMARY KEY (`regNo`),
   KEY `department` (`department`),
   CONSTRAINT `Lecturer_ibfk_1` FOREIGN KEY (`department`) REFERENCES `DepFaculty` (`department`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,13 +180,14 @@ DROP TABLE IF EXISTS `Student`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Student` (
-  `department` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `regNo` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `department` varchar(150) NOT NULL,
+  `regNo` varchar(12) NOT NULL,
+  `fname` varchar(100) NOT NULL,
+  `lname` varchar(100) NOT NULL,
   PRIMARY KEY (`regNo`),
   KEY `department` (`department`),
   CONSTRAINT `Student_ibfk_1` FOREIGN KEY (`department`) REFERENCES `DepFaculty` (`department`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -219,32 +200,6 @@ LOCK TABLES `Student` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `StudentUnit`
---
-
-DROP TABLE IF EXISTS `StudentUnit`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `StudentUnit` (
-  `regNo` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `code` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`regNo`,`code`),
-  KEY `code` (`code`),
-  CONSTRAINT `StudentUnit_ibfk_1` FOREIGN KEY (`regNo`) REFERENCES `Student` (`regNo`),
-  CONSTRAINT `StudentUnit_ibfk_2` FOREIGN KEY (`code`) REFERENCES `Unit` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `StudentUnit`
---
-
-LOCK TABLES `StudentUnit` WRITE;
-/*!40000 ALTER TABLE `StudentUnit` DISABLE KEYS */;
-/*!40000 ALTER TABLE `StudentUnit` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `Unit`
 --
 
@@ -252,11 +207,11 @@ DROP TABLE IF EXISTS `Unit`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Unit` (
-  `name` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `code` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cF` decimal(2,1) DEFAULT NULL,
+  `code` varchar(10) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `cF` decimal(2,1) NOT NULL,
   PRIMARY KEY (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -277,4 +232,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-18 21:04:49
+-- Dump completed on 2018-07-20 12:58:16

@@ -25,4 +25,7 @@ public class Clss{
   public Unit getU(){
     return u;
   }
+  public String toString(){
+    return "Lecturer: "+l.getName()+"Unit Name: "+u.getName()+"Unit Code: "+u.getCode()+"Course: "+c.getName();
+  }
 }

@@ -25,16 +25,29 @@ import timetable.DbDriver;
  */
 public class RemoveRoom implements Initializable{
     @FXML ComboBox<String> comboBox;
+    ArrayList<String> roomNames;
 
     public void remove(){
         String s = comboBox.getValue();
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
-        //i used this to debug something
-        //alert.setHeaderText(new Boolean(added).toString());
-        alert.setContentText(s == null? "empty string" :s);
-        alert.showAndWait();
+
+        if(s == null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Warning!");
+            alert.setContentText("you must select a room to remove");
+            alert.showAndWait();
+        }else{
+            DbDriver dbDriver = new DbDriver();
+            dbDriver.removeRoom(s);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setContentText(s+" has been removed from database");
+            alert.showAndWait();
+            roomNames.remove(s);
+            ObservableList<String> list = FXCollections.observableList(roomNames);
+            comboBox.setItems(list);
+        }
+
     }
     public void backButt(ActionEvent event) throws IOException{
         Parent backBut = FXMLLoader.load(getClass().getResource("manageTimetable.fxml"));
@@ -50,7 +63,7 @@ public class RemoveRoom implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         DbDriver dbDriver = new DbDriver();
-        ArrayList<String> roomNames = new ArrayList<>();
+        roomNames = new ArrayList<>();
         ArrayList<timetable.Room> roomList = dbDriver.getRooms();
         for(timetable.Room room : roomList){
             roomNames.add(room.getName());

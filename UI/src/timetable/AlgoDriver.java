@@ -6,7 +6,8 @@ public class AlgoDriver {//This class is meant to create the room allocating alg
 
     public static void main(String[] args){
         DbDriver dbDriver = new DbDriver();
-        dbDriver.addClass(new Clss(new Lecturer("Benjamin Odiyo"),new Unit("CS101"), new Course("CHINESE", 2, 70)));
+        //dbDriver.addClass(new Clss(new Lecturer("Benjamin Odiyo"),new Unit("introduction to computing", "CS101"), new Course("CHINESE", 2, 70)));
+        dbDriver.removeRoom("L3");
     }
     private static void assignRoom(Clss c, ArrayList<Room> roomList) {
         for (int i = 0; i < 2; i++) {

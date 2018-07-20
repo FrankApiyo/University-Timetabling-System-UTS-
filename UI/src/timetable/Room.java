@@ -6,12 +6,14 @@ public class Room {
     private boolean dF;
     private boolean lab;
     private String name;
+    private String boardType;
 
-    public Room(String name, int capacity, boolean dF, boolean lab){
+    public Room(String name, int capacity, boolean dF, boolean lab, String boardType){
         this.name = name;
         this.capacity = capacity;
         this.dF = dF;
         this.lab = lab;
+        this.boardType = boardType;
     }
     public boolean isdF() {
         return dF;
@@ -49,5 +51,16 @@ public class Room {
 
     public Clss[][] getDays() {
         return days;
+    }
+
+    public String getBoardType() {
+        return boardType;
+    }
+
+    public void setBoardType(String boardType) {
+        this.boardType = boardType;
+    }
+    public  String toString(){
+        return "name: "+name+"capacity: "+capacity;
     }
 }

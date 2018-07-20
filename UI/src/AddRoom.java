@@ -96,21 +96,21 @@ public class AddRoom implements Initializable{
             if(disToggle.getSelectedToggle() == disYes)
                 dF = true;
             DbDriver db = new DbDriver();
-            boolean added = db.addRoom(new Room(name, cap, dF, lab));
+            //TODO update ui so that we are able to record board type
+            boolean added = db.addRoom(new Room(name, cap, dF, lab, "WHITE"));
 
-            if(added){
+            if(added) {
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Success");
                 //i used this to debug something
                 //alert.setHeaderText(new Boolean(added).toString());
                 alert.setContentText("Room added to database!");
                 alert.showAndWait();
-            }else{
-                roomName.clear();
-                capacity.clear();
-                disToggle.selectToggle(null);
-                isLabToggle.selectToggle(null);
             }
+            roomName.clear();
+            capacity.clear();
+            disToggle.selectToggle(null);
+            isLabToggle.selectToggle(null);
         }
 
     }
