@@ -41,18 +41,20 @@ public class DbDriver {
             //TODOne -- Create a table with the schema in line Courses
             //TODOne -- Ensure that there are foreighn key constraints such that no course can be in Class table thats not in Course table.
             Statement statement = connectDb(dBase, name, pwd).createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT Lecturer.name, Unit.name, Unit.code, Course.name, Course.year, Course.number course FROM"+
+            ResultSet resultSet = statement.executeQuery("SELECT Lecturer.name, Unit.name, Unit.code, Course.name, Course.year, Course.number, Lecturer.regNo, Lecturer.department FROM"+
                                                         "(((Lecturer INNER JOIN Class ON Lecturer.regNo = Class.lec_reg_no)" +
                                                         "INNER JOIN Unit ON Class.unit_code = Unit.code)" +
                                                         "INNER JOIN Course ON Course.code = Class.course_code)");
             while(resultSet.next()){
-                String lec = resultSet.getString(1);
+                String lecName = resultSet.getString(1);
                 String unitName = resultSet.getString(2);
                 String unitCode = resultSet.getString(3);
                 String course = resultSet.getString(4);
                 int year = resultSet.getInt(5);
                 int number = resultSet.getInt(6);
-                list.add(new Clss(new Lecturer(lec), new Unit(unitName, unitCode), new Course(course, year, number)));
+                String lecRegNo = resultSet.getString(7);
+                String lecDepartment = resultSet.getString(8);
+                list.add(new Clss(new Lecturer(lecName, lecDepartment, lecRegNo), new Unit(unitName, unitCode), new Course(course, year, number)));
             }
         }catch(SQLException ex) {
             ex.printStackTrace();
@@ -132,6 +134,55 @@ public class DbDriver {
             alert.setContentText(ex.getMessage());
             alert.showAndWait();
             ex.printStackTrace();
+        }
+    }
+    public boolean addLecturer(Lecturer l){
+        try{
+            Statement statement  = connectDb(dBase, name, pwd).createStatement();
+            statement.executeUpdate("INSERT INTO Lecturer values('"+l.getRegNo().toUpperCase()+"', '"+l.getDepartment().toUpperCase()+"', '"+l.getName().toUpperCase()+"');");
+        }catch(SQLException ex){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("database error");
+            alert.setContentText(ex.getMessage());
+            alert.showAndWait();
+            ex.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+    public ArrayList<Lecturer> getLecturers(){
+        try{
+            Statement statement = connectDb(dBase, name, pwd).createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Lecturer");
+            //THE ORDER OF FIELDS IS: regNo, department, name
+            ArrayList<Lecturer> list = new ArrayList<>();
+            while(resultSet.next())
+                list.add(new Lecturer(resultSet.getString(3), resultSet.getString(2), resultSet.getString(1)));
+            return list;
+        }catch(SQLException ex){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("database error");
+            alert.setContentText(ex.getMessage());
+            alert.showAndWait();
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    public boolean removeLecturer(Lecturer l){
+        try{
+            Statement statement = connectDb(dBase, name, pwd).createStatement();
+            statement.executeUpdate("DELETE FROM Lecturer WHERE regNo = '"+l.getRegNo()+"'");
+            return true;
+        }catch(SQLException ex){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("database error");
+            alert.setContentText(ex.getMessage());
+            alert.showAndWait();
+            ex.printStackTrace();
+            return false;
         }
     }
 }

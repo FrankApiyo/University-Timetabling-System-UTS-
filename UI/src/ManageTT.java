@@ -15,6 +15,20 @@ public class ManageTT implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         
     }
+    public void removeLecturer(ActionEvent event) throws  IOException{
+        Parent parent = FXMLLoader.load(getClass().getResource("removeLecturer.fxml"));
+        Stage stage = ((Stage)((Node)event.getSource()).getScene().getWindow());
+        stage.setScene(new Scene(parent));
+        //stage.show();
+    }
+    public void addLecturer(ActionEvent event)throws IOException{
+        Parent addLec = FXMLLoader.load(getClass().getResource("addLecturer.fxml"));
+        Scene addLecScene = new Scene(addLec);
+
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(addLecScene);
+        stage.show();
+    }
     public void switchRButt(ActionEvent event) throws IOException{
         Parent switchBut = FXMLLoader.load(getClass().getResource("switchRoom.fxml"));
         Scene sRoomScene = new Scene(switchBut);

@@ -37,8 +37,17 @@ public class AlgoDriver {//This class is meant to create the room allocating alg
     public static void generateTimeTable(){
         //this method takes classes from the database and generates a roomchat using them
         // step 1: get all classes and add to class list from db : written getClasses for this
+        DbDriver dbDriver = new DbDriver();
+        ArrayList<Clss> classes = dbDriver.getClasses();
         // step 2: get all rooms and add to room list from db : written getRooms for this
-        // step 3: call assign room for every room
+        ArrayList<Room> rooms = dbDriver.getRooms();
+        // step 3: call assign room for every class
+        for(Clss c: classes){
+            assignRoom(c, rooms);
+        }
         // step 4: add room chart to database *one table per room*.
+        for(Room r: rooms){
+            //add room chart to database
+        }
     }
 }
