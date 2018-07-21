@@ -41,7 +41,7 @@ public class DbDriver {
             //TODOne -- Create a table with the schema in line Courses
             //TODOne -- Ensure that there are foreighn key constraints such that no course can be in Class table thats not in Course table.
             Statement statement = connectDb(dBase, name, pwd).createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT Lecturer.name, Unit.name, Unit.code, Course.name, Course.year, Course.number, Lecturer.regNo, Lecturer.department FROM"+
+            ResultSet resultSet = statement.executeQuery("SELECT Lecturer.name, Unit.name, Unit.code, Course.name, Course.year, Course.number, Lecturer.regNo, Lecturer.department, Unit.cF FROM"+
                                                         "(((Lecturer INNER JOIN Class ON Lecturer.regNo = Class.lec_reg_no)" +
                                                         "INNER JOIN Unit ON Class.unit_code = Unit.code)" +
                                                         "INNER JOIN Course ON Course.code = Class.course_code)");
@@ -54,7 +54,9 @@ public class DbDriver {
                 int number = resultSet.getInt(6);
                 String lecRegNo = resultSet.getString(7);
                 String lecDepartment = resultSet.getString(8);
-                list.add(new Clss(new Lecturer(lecName, lecDepartment, lecRegNo), new Unit(unitName, unitCode), new Course(course, year, number)));
+                double cf = resultSet.getDouble(9);
+                //System.out.println(cf);
+                list.add(new Clss(new Lecturer(lecName, lecDepartment, lecRegNo), new Unit(unitName, unitCode, cf), new Course(course, year, number)));
             }
         }catch(SQLException ex) {
             ex.printStackTrace();
