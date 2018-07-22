@@ -187,4 +187,23 @@ public class DbDriver {
             return false;
         }
     }
+    public ArrayList<Course> getCourses(){
+        try{
+            ArrayList<Course> list = new ArrayList<>();
+            Statement statement = connectDb(dBase, name, pwd).createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Course;");
+            while(resultSet.next()){
+                list.add(new Course(resultSet.getString(1),resultSet.getInt(2), resultSet.getInt(3)));
+            }
+            return list;
+        }catch (SQLException ex){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("database error");
+            alert.setContentText(ex.getMessage());
+            alert.showAndWait();
+            ex.printStackTrace();
+            return null;
+        }
+    }
 }
