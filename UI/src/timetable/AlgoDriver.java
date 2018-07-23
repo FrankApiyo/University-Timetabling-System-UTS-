@@ -1,7 +1,9 @@
 package timetable;
 
+import javafx.scene.control.Alert;
+
 import java.util.ArrayList;
-import java.util.Collections;
+import java.io.*;
 
 public class AlgoDriver{
     static ArrayList<Room> rooms;
@@ -10,10 +12,14 @@ public class AlgoDriver{
         DbDriver dbDriver = new DbDriver();
         rooms = dbDriver.getRooms();
         classes = dbDriver.getClasses();
+        //create timetable by assigning each class a room
         for(Clss c: classes) {
-            System.out.println(c.getU().getCode()+" "+c.getClassCount()+" "+c.getC().getName()+" "+c.getC().getYear());
+            //System.out.println(c.getU().getCode()+" "+c.getClassCount()+" "+c.getC().getName()+" "+c.getC().getYear());
             assignRoom(c);
         }
+        saveRooms();
+        getRoomFromFile();
+        // Test code
         Clss[][] slots = rooms.get(0).getDays();
         for(Clss c : slots[0])
             System.out.print("SLOT\t\t");
@@ -47,7 +53,7 @@ public class AlgoDriver{
                     if (days[i][j] == null && !conflict(c, i, j, rooms.get(k))) {//also ensure no conflicts
                         days[i][j] = c;
                         c.decClassCount();
-                        System.out.println(c.getClassCount());
+                        //System.out.println(c.getClassCount());
                         continue ONE;
                     }
                 }
@@ -64,8 +70,40 @@ public class AlgoDriver{
         for(Room r: rooms){
             if(r == room) break;
             Clss[][] classes = r.getDays();
-            if(classes[i][j] == c) return true;
+            if(classes[i][j] == null) continue;
+            else if(classes[i][j].getC() == c.getC()) return true;
         }
         return false;
+    }
+    private static void saveRooms(){
+        //store the time table in a file
+        try(
+                ObjectOutputStream fileOut = new ObjectOutputStream(new FileOutputStream("timetable.dat"))
+        ){
+            fileOut.writeObject(rooms);
+        }catch(FileNotFoundException ex){
+            ex.printStackTrace();
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
+    }
+    private static void getRoomFromFile(){
+        //restore the timetable from file.
+        try(
+                ObjectInputStream fileOut = new ObjectInputStream(new FileInputStream("timetable.dat"))
+        ){
+            rooms = (ArrayList<Room>) fileOut.readObject();
+        }catch(FileNotFoundException ex){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText("file system error error");
+            alert.setContentText("couldn't locate the database file");
+            alert.showAndWait();
+            ex.printStackTrace();
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }catch (ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
     }
 }

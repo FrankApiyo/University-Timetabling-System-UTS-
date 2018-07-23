@@ -1,6 +1,8 @@
 package timetable;
 
-public class Room implements  Comparable<Room>{
+import java.io.Serializable;
+
+public class Room implements  Comparable<Room>, Serializable {
     private int capacity;
     private boolean dF;
     private boolean lab;
