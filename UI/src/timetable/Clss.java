@@ -7,9 +7,7 @@ package timetable;
 * Course
 */
 
-import java.io.Serializable;
-
-public class Clss implements Comparable<Clss>, Serializable{
+public class Clss implements Comparable<Clss>{
   private Lecturer l;
   private Unit u;
   private Course c;
@@ -18,8 +16,8 @@ public class Clss implements Comparable<Clss>, Serializable{
     this.l = l;
     this.u = u;
     this.c = c;
-    classCount = (int)(u.getcf() / 0.5); //the number of classes for a particular unit each week
-    //System.out.println(u.getcf());
+    classCount = u.calculateHours(); //the number of classes for a particular unit each week
+
   }
   public Lecturer getL(){
     return l;
@@ -40,4 +38,5 @@ public class Clss implements Comparable<Clss>, Serializable{
   public int compareTo(Clss c){
     return c.getC().getNumber() - this.getC().getNumber();
   }
+
 }
