@@ -1,3 +1,4 @@
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,8 +8,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.scene.text.Text;
 
 public class Login implements Initializable {
     private String uName = "";
@@ -16,9 +17,9 @@ public class Login implements Initializable {
     @FXML
     JFXTextField username;
     @FXML
-    JFXTextField password;
+    JFXPasswordField password;
     @FXML
-    Label wrong;
+    Text login_text;
     @Override
     public void initialize(URL url, ResourceBundle  bundle){
         //for now use constants -- later these will be read from a file.
@@ -36,7 +37,7 @@ public class Login implements Initializable {
             stage.setScene(scene);
         }else{
             //show warning.
-            wrong.setVisible(true);
+            login_text.setText("Incorrect Credentials");
         }
     }
 }
