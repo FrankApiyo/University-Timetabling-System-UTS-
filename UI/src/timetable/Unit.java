@@ -1,6 +1,8 @@
 package timetable;
 
-public class Unit {
+import java.io.Serializable;
+
+public class Unit implements Serializable {
 
     String name;
     String code;

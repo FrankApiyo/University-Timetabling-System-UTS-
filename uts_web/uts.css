@@ -1,0 +1,35 @@
+h1{
+  text-align: center;
+}
+.loginform{
+  height: 350px;
+  width: 500px;
+  background-color: #c5e1a5;
+  margin-left: 400px;
+  margin-top: 80px;
+  border-radius: 20px;
+  border: #c5e1a5;
+  padding: 20px;
+}
+.yeardiv{
+  background-color: #c5e1a5;
+  margin: 50px;
+  height: 500px;
+  width: 1000px;
+  margin-left: 200px;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+}
+table tr th, td {
+    padding: 10px;
+    width: 150px;
+  }
+  .uts{
+    padding: 10px;
+    background-color: #c5e1a5;
+  }
+.tan{
+    width: 100px;
+    color: black;
+}
