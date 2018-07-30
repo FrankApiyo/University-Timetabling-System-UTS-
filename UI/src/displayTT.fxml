@@ -21,27 +21,27 @@
               <columns>
                   <TableColumn fx:id="dayColumn" prefWidth="75.0" text="Day" />
 
-                <TableColumn editable="false" prefWidth="75.0" sortable="false" text="7:00-8:00" />
+                <TableColumn fx:id="c1" editable="false" prefWidth="101.0" sortable="false" text="7:00-8:00" />
 
-                <TableColumn editable="false" prefWidth="75.0" sortable="false" text="8:00-9:00" />
+                <TableColumn fx:id="c2" editable="false" prefWidth="45.0" sortable="false" text="8:00-9:00" />
 
-                  <TableColumn editable="false" prefWidth="75.0" sortable="false" text="9:00-10:00" />
+                  <TableColumn fx:id="c3" editable="false" prefWidth="75.0" sortable="false" text="9:00-10:00" />
 
-                  <TableColumn editable="false" prefWidth="75.0" sortable="false" text="10:00-11:00" />
+                  <TableColumn fx:id="c4" editable="false" prefWidth="75.0" sortable="false" text="10:00-11:00" />
 
-                  <TableColumn editable="false" prefWidth="75.0" sortable="false" text="11:00-12:00" />
+                  <TableColumn fx:id="c5" editable="false" prefWidth="75.0" sortable="false" text="11:00-12:00" />
 
-                  <TableColumn prefWidth="75.0" sortable="false" text="12:00-1:00" />
+                  <TableColumn fx:id="c6" prefWidth="75.0" sortable="false" text="12:00-1:00" />
 
-                  <TableColumn prefWidth="75.0" sortable="false" text="1:00-2:00" />
+                  <TableColumn fx:id="c7" prefWidth="75.0" sortable="false" text="1:00-2:00" />
 
-                  <TableColumn prefWidth="75.0" sortable="false" text="2:00-3:00" />
+                  <TableColumn fx:id="c8" prefWidth="75.0" sortable="false" text="2:00-3:00" />
 
-                  <TableColumn prefWidth="75.0" sortable="false" text="3:00-4:00" />
+                  <TableColumn fx:id="c9" prefWidth="75.0" sortable="false" text="3:00-4:00" />
 
-                  <TableColumn prefWidth="75.0" sortable="false" text="4:00-5:00" />
+                  <TableColumn fx:id="c10" prefWidth="75.0" sortable="false" text="4:00-5:00" />
 
-                  <TableColumn prefWidth="75.0" sortable="false" text="5:00-6:00" />
+                  <TableColumn fx:id="c11" prefWidth="75.0" sortable="false" text="5:00-6:00" />
 
 
               </columns>

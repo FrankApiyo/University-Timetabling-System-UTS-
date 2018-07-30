@@ -31,6 +31,17 @@ public class DisplayTT implements Initializable {
     private ArrayList<Course> courses;
     @FXML public ComboBox<String> course;
     @FXML public ComboBox<Integer> year;
+    @FXML public TableColumn<Day, String> c11;
+    @FXML public TableColumn<Day, String> c10;
+    @FXML public TableColumn<Day, String> c9;
+    @FXML public TableColumn<Day, String> c8;
+    @FXML public TableColumn<Day, String> c7;
+    @FXML public TableColumn<Day, String> c6;
+    @FXML public TableColumn<Day, String> c5;
+    @FXML public TableColumn<Day, String> c4;
+    @FXML public TableColumn<Day, String> c3;
+    @FXML public TableColumn<Day, String> c2;
+    @FXML public TableColumn<Day, String> c1;
 
     @FXML
     private TableView<Day> timetable;
@@ -74,6 +85,53 @@ public class DisplayTT implements Initializable {
     }
     public void selectYear(){
         //show timetable on table
+        ObservableList<Day> data =
+                FXCollections.observableArrayList(
+                       new Day("Monday", new String[]{"one", "one", "one", "one", "one", "one", "one", "one", "one", "one", "one"}),
+                        new Day("Tuesday", new String[]{"one", "one", "one", "one", "one", "one", "one", "one", "one", "one", "one"}),
+                        new Day("Wednesday", new String[]{"one", "one", "one", "one", "one", "one", "one", "one", "one", "one", "one"}),
+                        new Day("Thursday", new String[]{"one", "one", "one", "one", "one", "one", "one", "one", "one", "one", "one"}),
+                        new Day("Friday", new String[]{"one", "one", "one", "one", "one", "one", "one", "one", "one", "one", "one"})
+                );
+        timetable.setItems(data);
+        dayColumn.setCellValueFactory(
+                new PropertyValueFactory<>("weekDay")
+        );
+        c1.setCellValueFactory(
+                new PropertyValueFactory<>("c1")
+        );
+        c2.setCellValueFactory(
+                new PropertyValueFactory<>("c2")
+        );
+        c3.setCellValueFactory(
+                new PropertyValueFactory<>("c3")
+        );
+        c4.setCellValueFactory(
+                new PropertyValueFactory<>("c4")
+        );
+        c5.setCellValueFactory(
+                new PropertyValueFactory<>("c5")
+        );
+        c6.setCellValueFactory(
+                new PropertyValueFactory<>("c6")
+        );
+        c7.setCellValueFactory(
+                new PropertyValueFactory<>("c7")
+        );
+        c8.setCellValueFactory(
+                new PropertyValueFactory<>("c8")
+        );
+        c9.setCellValueFactory(
+                new PropertyValueFactory<>("c9")
+        );
+        c10.setCellValueFactory(
+                new PropertyValueFactory<>("c10")
+        );
+        c11.setCellValueFactory(
+                new PropertyValueFactory<>("c11")
+        );
+        timetable.getColumns().get(0).setVisible(false);
+        timetable.getColumns().get(0).setVisible(true);
     }
     /*
     private ObservableList<Day> getDays() {
