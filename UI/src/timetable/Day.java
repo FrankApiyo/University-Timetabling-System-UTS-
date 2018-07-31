@@ -8,51 +8,75 @@ public class Day {
     private SimpleStringProperty weekDay;
     private SimpleStringProperty[] slots = new SimpleStringProperty[11];
 
-    public Day(String weekday, String[] classes){
+    public Day(String weekday){
         this.weekDay = new SimpleStringProperty(weekday);
-        for(int i = 0; i < slots.length; i++){
-            slots[i] = new SimpleStringProperty(classes[i]);
-        }
     }
 
+    public void setSlot(String lesson, int slotNumber){
+        slots[slotNumber] = new SimpleStringProperty(lesson);
+    }
     public String getWeekDay() {
-        return weekDay.get();
+        if(weekDay != null)
+            return weekDay.get();
+        return "";
     }
 
-    public void setWeekDay(SimpleStringProperty weekday) {
-        this.weekDay = weekday;
-    }
     public String getC1(){
-        return slots[0].get();
+        if(slots[0] != null)
+            return slots[0].get();
+        else return "";
     }
     public String getC2(){
-        return slots[1].get();
+        if(slots[1] != null)
+            return slots[1].get();
+        else return "";
+
     }
     public String getC3(){
-        return slots[2].get();
+        if(slots[2] != null)
+            return slots[2].get();
+        else return "";
+
     }
     public String getC4(){
-        return slots[3].get();
+        if(slots[3] != null)
+            return slots[3].get();
+        else return "";
     }
     public String getC5(){
-        return slots[4].get();
+        if(slots[4] != null)
+            return slots[4].get();
+        else return "";
     }
     public String getC6(){
-        return slots[5].get();
+        if(slots[5] != null)
+            return slots[5].get();
+        else return "";
     }
     public String getC7(){
-        return slots[6].get();
+        if(slots[6] != null)
+            return slots[6].get();
+        else return "";
     }
     public String getC8(){
-        return slots[7].get();
+        if(slots[7] != null)
+            return slots[7].get();
+        else return "";
     }
     public String getC9(){
-        return slots[8].get();
+        if(slots[8] != null)
+            return slots[8].get();
+        else return "";
     }
     public String getC10(){
-        return slots[9].get();
+        if(slots[9] != null)
+            return slots[9].get();
+        else return "";
     }
     public String getC11(){
-        return slots[10].get();
+        if(slots[10] != null)
+            return slots[10].get();
+        else return "";
+
     }
 }

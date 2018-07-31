@@ -8,19 +8,18 @@ import java.io.*;
 public class AlgoDriver{
     static ArrayList<Room> rooms;
     static ArrayList<Clss> classes;
-    public static  void main(String[] args){
+    public AlgoDriver(){
         DbDriver dbDriver = new DbDriver();
-        rooms = dbDriver.getRooms();
+
+        //rooms = dbDriver.getRooms();
+        getRoomFromFile();
         classes = dbDriver.getClasses();
         //create timetable by assigning each class a room
-        for(Clss c: classes) {
-            //System.out.println(c.getU().getCode()+" "+c.getClassCount()+" "+c.getC().getName()+" "+c.getC().getYear());
-            assignRoom(c);
-        }
-        saveRooms();
-        getRoomFromFile();
-        // Test code
-        Clss[][] slots = rooms.get(0).getDays();
+        //generateTimetable();
+        //saveRooms();
+        //getRoomFromFile();
+        // Test code-- prints out the timetable
+        /* Clss[][] slots = rooms.get(0).getDays();
         for(Clss c : slots[0])
             System.out.print("SLOT\t\t");
         System.out.println();
@@ -37,8 +36,16 @@ public class AlgoDriver{
             }
 
         }
+        */
     }
-    private static void assignRoom(Clss c){
+    public void generateTimetable(){
+        for(Clss c: classes) {
+            //System.out.println(c.getU().getCode()+" "+c.getClassCount()+" "+c.getC().getName()+" "+c.getC().getYear());
+            assignRoom(c);
+        }
+        saveRooms();
+    }
+    private void assignRoom(Clss c){
         //loop through rooms until an appropriate class is found then assign
 
         ONE:
@@ -47,8 +54,9 @@ public class AlgoDriver{
             Clss[][] days = rooms.get(k).getDays();
             TWO:
             for(int i = 0; i < days.length; i++) {
-                //if class already in day move to next day
+                //if class already in day or course already has two classes in day move to next day
                 if(classInDay(c, days[i])) continue TWO;
+                if(courseMoreThanTwice(days[i], c.getC())) continue TWO;
                 for (int j = 0; j < days[i].length; j++) {
                     if (days[i][j] == null && !conflict(c, i, j, rooms.get(k))) {//also ensure no conflicts
                         days[i][j] = c;
@@ -60,22 +68,36 @@ public class AlgoDriver{
             }
         }
     }
-    private static boolean classInDay(Clss c, Clss[] day){
+    private boolean classInDay(Clss c, Clss[] day){
         for(int i = 0; i < day.length; i++)
-            if(day[i] == c)
-                return true;
+            if(day[i] != null)
+                if(day[i].equals(c))
+                    return true;
         return false;
     }
-    private static boolean conflict(Clss c, int i, int j, Room room){
+    //checks if course has had a class more than twice on on day
+    private boolean courseMoreThanTwice(Clss[] day, Course c){
+        int count = 0;
+        for(int i = 0; i < day.length; i++)
+            if(day[i] != null)
+                if(day[i].getC().equals(c))
+                    count++;
+        if(count >= 2) {
+            //System.out.println("flagged one");
+            return true;
+        }
+        else return false;
+    }
+    private  boolean conflict(Clss c, int i, int j, Room room){
         for(Room r: rooms){
             if(r == room) break;
             Clss[][] classes = r.getDays();
             if(classes[i][j] == null) continue;
-            else if(classes[i][j].getC() == c.getC()) return true;
+            else if(classes[i][j].getC().equals(c.getC())) return true;
         }
         return false;
     }
-    private static void saveRooms(){
+    private void saveRooms(){
         //store the time table in a file
         try(
                 ObjectOutputStream fileOut = new ObjectOutputStream(new FileOutputStream("timetable.dat"))
@@ -87,7 +109,7 @@ public class AlgoDriver{
             ex.printStackTrace();
         }
     }
-    private static void getRoomFromFile(){
+    private  void getRoomFromFile(){
         //restore the timetable from file.
         try(
                 ObjectInputStream fileOut = new ObjectInputStream(new FileInputStream("timetable.dat"))
@@ -105,5 +127,38 @@ public class AlgoDriver{
         }catch (ClassNotFoundException ex){
             ex.printStackTrace();
         }
+    }
+    public Day getClasses(int dayNumber, Course c){
+        Day day = null;
+        switch (dayNumber){
+            case 0: day = new Day("Monday"); break;
+            case 1: day = new Day("Tuesday"); break;
+            case 2: day = new Day("Wednesday"); break;
+            case 3: day = new Day("Thursday"); break;
+            case 4: day = new Day("Friday");
+        }
+
+        //loop through 'room-chart' looking for classes by this course on day 'dayNumber'
+        for(Room r: rooms){
+            Clss[][] clsses = r.getDays();
+                for(int i = 0; i < clsses[dayNumber].length; i++){
+                    if(clsses[dayNumber][i] != null) {
+                        //System.out.println("\n\n"+clsses[dayNumber][i].getC().getName()+"\t"+clsses[dayNumber][i].getC().getYear());
+                        //System.out.println(c.getName()+"\t"+c.getYear());
+                        //System.out.println(clsses[dayNumber][i].getC().equals(c));
+                        if (clsses[dayNumber][i].getC().equals(c)) {
+                            //System.out.println(c.getName());
+                            //for the string that represents the lesson. i.e.
+                            //A concatenation of the unit code, ', ', and the venue.
+                            String code = clsses[dayNumber][i].getU().getCode();
+                            String venue = r.getName();
+                            String s = code + ", " + venue;
+                            //System.out.println(day.getWeekDay()+"\t"+s+"\t"+i);
+                            day.setSlot(s, i);
+                        }
+                    }
+                    }
+        }
+        return day;
     }
 }

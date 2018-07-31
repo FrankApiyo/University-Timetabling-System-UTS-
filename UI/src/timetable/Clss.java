@@ -40,5 +40,7 @@ public class Clss implements Comparable<Clss>, Serializable {
   public int compareTo(Clss c){
     return c.getC().getNumber() - this.getC().getNumber();
   }
-
+  public boolean equals(Clss c){
+    return c.getC().equals(this.getC()) && c.getU().equals(this.getU()) && c.getL().equals(this.getL());
+  }
 }

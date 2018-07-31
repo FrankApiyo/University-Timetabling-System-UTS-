@@ -50,4 +50,7 @@ public class Unit implements Serializable {
         }
         return hours;
     }
+    public boolean equals(Unit u){
+        return this.getCode().trim().equalsIgnoreCase(u.getCode().trim());
+    }
 }

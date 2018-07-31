@@ -19,6 +19,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import timetable.AlgoDriver;
 import timetable.Course;
 import timetable.Day;
 import timetable.DbDriver;
@@ -85,13 +86,33 @@ public class DisplayTT implements Initializable {
     }
     public void selectYear(){
         //show timetable on table
+        //first create the days objects representing the timetable for this specific course and year.
+        Day[] days = new Day[5];
+
+        //get selected course
+        String courseName = course.getValue();
+        int courseYear = 0;
+        if(year.getValue() == null)
+            return;
+        else courseYear = year.getValue();
+        Course selectedCourse = null;
+        for(Course c : courses)
+            if(c.getName().compareTo(courseName) == 0 && c.getYear() == courseYear)
+                selectedCourse = c;
+        //loop through days finding classes for each day
+        AlgoDriver driver = new AlgoDriver();
+        for(int i = 0; i < days.length; i++){
+            days[i] = driver.getClasses(i, selectedCourse);
+            //System.out.println(i+"\n"+ (days[i] == null));
+            //System.out.println("DisplayTT107"+"\t"+days[i].getWeekDay()+"\t"+days[i].getC1()+"\t"+days[i].getC2()+"\t"+days[i].getC3()+"\t"+days[i].getC4()+"\t"+days[i].getC5()+"\t"+days[i].getC6()+"\t"+days[i].getC7()+"\t"+days[i].getC8()+"\t"+days[i].getC9()+"\t"+days[i].getC10()+"\t"+days[i].getC11());
+
+
+        }
+
         ObservableList<Day> data =
                 FXCollections.observableArrayList(
-                       new Day("Monday", new String[]{"one", "one", "one", "one", "one", "one", "one", "one", "one", "one", "one"}),
-                        new Day("Tuesday", new String[]{"one", "one", "one", "one", "one", "one", "one", "one", "one", "one", "one"}),
-                        new Day("Wednesday", new String[]{"one", "one", "one", "one", "one", "one", "one", "one", "one", "one", "one"}),
-                        new Day("Thursday", new String[]{"one", "one", "one", "one", "one", "one", "one", "one", "one", "one", "one"}),
-                        new Day("Friday", new String[]{"one", "one", "one", "one", "one", "one", "one", "one", "one", "one", "one"})
+                       //new Day("Monday")
+                        days
                 );
         timetable.setItems(data);
         dayColumn.setCellValueFactory(
@@ -130,21 +151,8 @@ public class DisplayTT implements Initializable {
         c11.setCellValueFactory(
                 new PropertyValueFactory<>("c11")
         );
+
         timetable.getColumns().get(0).setVisible(false);
         timetable.getColumns().get(0).setVisible(true);
     }
-    /*
-    private ObservableList<Day> getDays() {
-        ObservableList<Day> days = FXCollections.observableArrayList();
-
-        days.add(new Day("Monday"));
-        days.add(new Day("Teusday"));
-        days.add(new Day("Wednesday"));
-        days.add(new Day("Thursday"));
-        days.add(new Day("Friday"));
-
-        return days;
-
-    }
-    */
 }

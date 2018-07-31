@@ -20,4 +20,7 @@ public class Course implements Serializable {
   public int getNumber(){
     return studentNumber;
   }
+  public boolean equals(Course c){
+    return (c.getName().trim().equalsIgnoreCase(this.getName().trim()) && c.getYear() == this.getYear());
+  }
 }

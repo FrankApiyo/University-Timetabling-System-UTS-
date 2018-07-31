@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="204.0" prefWidth="433.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManageTT">
+<VBox prefHeight="204.0" prefWidth="433.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManageTT">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="326.0" prefWidth="640.0" style="-fx-background-color: #c5e1a5;" VBox.vgrow="ALWAYS">
          <children>
@@ -15,7 +15,7 @@
                   <Font name="Bell MT" size="15.0" />
                </font>
             </Button>
-            <Label layoutX="50.0" layoutY="87.0" text="TIMETABLE GENERATED!">
+            <Label layoutX="25.0" layoutY="47.0" prefHeight="87.0" prefWidth="492.0" text="This will delete the current timetable!">
                <font>
                   <Font name="Bell MT" size="26.0" />
                </font>

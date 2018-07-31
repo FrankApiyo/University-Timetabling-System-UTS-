@@ -19,4 +19,7 @@ public class Lecturer implements Serializable {
     }
     public String getRegNo(){return regNo; }
     public String getDepartment(){ return department; }
+    public boolean equals(Lecturer l){
+        return l.getRegNo().trim().equalsIgnoreCase(this.getRegNo().trim());
+    }
 }
