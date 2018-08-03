@@ -3,9 +3,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -33,7 +38,7 @@ public class HomeV2Controller implements Initializable {
 
     @FXML
     private void showCheckReq(MouseEvent event) throws IOException {
-        DynamicView.loadBorderCenter(border_pane, "reqRequest.fxml");
+        DynamicView.loadBorderCenter(border_pane, "checkReq.fxml");
     }
 
     @FXML
@@ -58,7 +63,11 @@ public class HomeV2Controller implements Initializable {
 
     @FXML
     private void showLogin(MouseEvent event) throws IOException {
-        DynamicView.loadBorderCenter(border_pane, "login.fxml");
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+
+        Stage addRoomWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        addRoomWindow.setScene(new Scene(root));
+        addRoomWindow.show();
     }
     
 }
