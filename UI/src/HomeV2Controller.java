@@ -70,4 +70,9 @@ public class HomeV2Controller implements Initializable {
         addRoomWindow.show();
     }
     
+    @FXML
+    private void showIEO() throws IOException{
+        DynamicView.loadBorderCenter(border_pane, "ieo.fxml");
+    }
+    
 }
