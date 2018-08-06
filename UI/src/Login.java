@@ -1,4 +1,5 @@
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.scene.text.Text;
 
@@ -22,12 +24,21 @@ public class Login implements Initializable {
     JFXPasswordField password;
     @FXML
     Text login_text;
+    @FXML
+    JFXButton login_button;
 
     @Override
     public void initialize(URL url, ResourceBundle bundle) {
         //for now use constants -- later these will be read from a file.
         uName = "uts";
         pWd = "uts";
+        password.setOnKeyPressed(event -> {
+            if (event.getCode()==KeyCode.ENTER){
+                try{login();} catch (IOException ex){
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 
     public void login() throws IOException {
