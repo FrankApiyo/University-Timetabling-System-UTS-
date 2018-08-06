@@ -6,9 +6,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class DbDriver {
-    private static final String dBase = "jdbc:mysql://localhost/utsbase";
-    private static final String name = "root";
-    private  static final String pwd = "Frankline";
+    private static final String dBase = "jdbc:mysql://localhost/utsbase?useSSL=false";
+    private static final String name = "brian";
+    private  static final String pwd = "23brian19";
     public Connection connectDb(String database, String username, String password){
         Connection connection = null;
         try{
@@ -205,5 +205,26 @@ public class DbDriver {
             ex.printStackTrace();
             return null;
         }
+    }
+
+    public boolean addIEO(IEO ieo) {
+        boolean isAdded = false;
+        try {
+            Statement statement = connectDb(dBase,name,pwd).createStatement();
+            statement.executeUpdate("INSERT INTO `IEO` VALUES ('"+ieo.getDepartment()+"'," +
+                    "'"+ieo.getEmail()+"'," +
+                    "'"+ieo.getPhone()+"'," +
+                    "'"+ieo.getFname()+"'," +
+                    "'"+ieo.getLname()+"'," +
+                    "'"+ieo.getPassword()+"');");
+
+            isAdded = true;
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return isAdded;
     }
 }
