@@ -39,7 +39,7 @@ public class ManageTT implements Initializable{
     }
     
     public void backButt(ActionEvent event) throws IOException{
-        Parent backBut = FXMLLoader.load(getClass().getResource("home.fxml"));
+        Parent backBut = FXMLLoader.load(getClass().getResource("homeV2.fxml"));
         Scene backButScene = new Scene(backBut);
         
         Stage backWindow = (Stage)((Node)event.getSource()).getScene().getWindow();

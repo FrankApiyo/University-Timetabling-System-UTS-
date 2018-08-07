@@ -69,7 +69,7 @@ public class DisplayTT implements Initializable {
     }
 
     public void backButt(ActionEvent event) throws IOException {
-        Parent backBut = FXMLLoader.load(getClass().getResource("home.fxml"));
+        Parent backBut = FXMLLoader.load(getClass().getResource("homeV2.fxml"));
         Scene backButScene = new Scene(backBut);
 
         Stage addRoomWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 import javafx.scene.text.Text;
 
 public class Login implements Initializable {
-
     private String uName = "";
     private String pWd = "";
     @FXML

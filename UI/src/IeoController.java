@@ -4,82 +4,49 @@
  * and open the template in the editor.
  */
 
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
+
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
+import com.jfoenix.controls.JFXButton;
+
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import timetable.IEO;
 import timetable.DbDriver;
-import timetable.Room;
 
-/**
- * FXML Controller class
- *
- * @author brianbett
- */
 public class IeoController implements Initializable {
 
-    @FXML
-    private JFXTextField fname;
-    @FXML
-    private JFXTextField lname;
-    @FXML
-    private JFXTextField email;
-    @FXML
-    private JFXTextField phone;
-    @FXML
-    private JFXTextField department;
-    @FXML
-    private JFXPasswordField password;
+    @FXML private JFXTextField tf_fname;
+    @FXML private JFXTextField tf_lname;
+    @FXML private JFXTextField tf_email;
+    @FXML private JFXTextField tf_phone;
+    @FXML private JFXTextField tf_department;
+    @FXML private JFXPasswordField pf_password;
+    @FXML private JFXPasswordField pf_cpassword;
+    @FXML JFXButton btn_add;
 
-    /**
-     * Initializes the controller class.
-     */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        btn_add.setOnAction(event -> {submitt();});
     }    
-    
 
-    @FXML
-    private void submitt(ActionEvent event) {
-        if(lname.getText().length() == 0 ||
-                fname.getText().length() == 0 ||
-                department.getText().length() == 0 ||
-                phone.getText().length() == 0 ||
-                email.getText().length() == 0 || 
-                password.getText().length() == 0){
-            //TODO style this alert box.
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error");
-            alert.setHeaderText("Incomplete data");
-            alert.setContentText("You must enter all fields!");
-
-            alert.showAndWait();
-        }else{
+    private void submitt() {
+        if(pf_password.getText().equals(pf_cpassword.getText())){
             DbDriver db = new DbDriver();
-            
-            //TODO update ui so that we are able to record board type
-            boolean added = db.addIEO(new IEO(department.getText(), email.getText(), phone.getText(), fname.getText(), lname.getText(), password.getText()));
-
-            if(added) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Success");
-                //i used this to debug something
-                //alert.setHeaderText(new Boolean(added).toString());
-                alert.setContentText("Room added to database!");
-                alert.showAndWait();
+            boolean added = db.addIEO(new IEO(tf_department.getText(),
+                    tf_email.getText(),
+                    tf_phone.getText(),
+                    tf_fname.getText(),
+                    tf_lname.getText(),
+                    pf_password.getText()));
+            if (added){
+                //TODO "Update UI to notify the admin"
             }
-            fname.clear();
-            lname.clear();
-            email.clear();
-            phone.clear();
-            department.clear();
-            password.clear();
+
         }
     }
 }
+

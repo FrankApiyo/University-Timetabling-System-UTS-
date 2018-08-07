@@ -12,5 +12,6 @@ public class GenerateTT implements Initializable {
 
     public void okbutton(){
 
+
     }
 }

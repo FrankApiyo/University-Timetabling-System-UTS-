@@ -3,7 +3,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Day {
     
-    private SimpleStringProperty weekday = new SimpleStringProperty();
+    private SimpleStringProperty weekday;
     
     public Day(String weekday){
         this.weekday = new SimpleStringProperty(weekday);

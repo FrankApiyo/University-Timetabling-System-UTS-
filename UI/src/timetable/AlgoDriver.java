@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.io.*;
 
 public class AlgoDriver{
-    static ArrayList<Room> rooms;
-    static ArrayList<Clss> classes;
+    static ArrayList<Room> rooms = new ArrayList<>();
+    static ArrayList<Clss> classes = new ArrayList<>();
     public AlgoDriver(){
         DbDriver dbDriver = new DbDriver();
 
