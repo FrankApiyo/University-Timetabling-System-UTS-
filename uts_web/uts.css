@@ -5,7 +5,7 @@ h1{
   height: 350px;
   width: 500px;
   background-color: #c5e1a5;
-  margin-left: 400px;
+  margin-left: 370px;
   margin-top: 80px;
   border-radius: 20px;
   border: #c5e1a5;
@@ -16,7 +16,7 @@ h1{
   margin: 50px;
   height: 500px;
   width: 1000px;
-  margin-left: 200px;
+  margin-left: 150px;
   padding: 20px;
   border-radius: 20px;
   text-align: center;
@@ -25,11 +25,22 @@ table tr th, td {
     padding: 10px;
     width: 150px;
   }
+  .index{
+    background-color: rgba(197, 225, 165, 0.2);
+  }
   .uts{
     padding: 10px;
     background-color: #c5e1a5;
   }
-.tan{
-    width: 100px;
-    color: black;
-}
+  .top{
+    margin-top: 40px;
+  }
+  .btwn{
+    margin-top: 30px;
+  }
+  .low{
+    margin-top: 30px;
+  }
+  .logout{
+    float: right;
+  }
