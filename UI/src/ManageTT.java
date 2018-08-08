@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import timetable.AlgoDriver;
 
 public class ManageTT implements Initializable{
 
@@ -66,6 +67,8 @@ public class ManageTT implements Initializable{
     }
     
      public void okButt(ActionEvent event) throws IOException {
+         AlgoDriver driver  = new AlgoDriver();
+         driver.generateTimetable();
         Parent okBut = FXMLLoader.load(getClass().getResource("displayTT.fxml"));
         Scene removeButScene = new Scene(okBut);
 

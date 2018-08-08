@@ -9,7 +9,7 @@ package timetable;
 
 import java.io.Serializable;
 
-public class Clss implements Comparable<Clss>, Serializable {
+public class Clss implements Comparable<Clss>, Serializable{
   private Lecturer l;
   private Unit u;
   private Course c;

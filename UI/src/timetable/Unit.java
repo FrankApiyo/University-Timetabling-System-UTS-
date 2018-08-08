@@ -2,7 +2,7 @@ package timetable;
 
 import java.io.Serializable;
 
-public class Unit implements Serializable {
+public class Unit implements Serializable{
 
     String name;
     String code;

@@ -3,7 +3,7 @@ package timetable;
 
 import javafx.beans.property.SimpleStringProperty;
 
-public class Day {
+public class Day{
     
     private SimpleStringProperty weekDay;
     private SimpleStringProperty[] slots = new SimpleStringProperty[11];

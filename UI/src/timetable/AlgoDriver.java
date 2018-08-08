@@ -8,11 +8,13 @@ import java.io.*;
 public class AlgoDriver{
     static ArrayList<Room> rooms = new ArrayList<>();
     static ArrayList<Clss> classes = new ArrayList<>();
+    static boolean generated = false;
     public AlgoDriver(){
         DbDriver dbDriver = new DbDriver();
 
         //rooms = dbDriver.getRooms();
-        getRoomFromFile();
+        if(generated)
+            getRoomFromFile();
         classes = dbDriver.getClasses();
         //create timetable by assigning each class a room
         //generateTimetable();
@@ -44,6 +46,7 @@ public class AlgoDriver{
             assignRoom(c);
         }
         saveRooms();
+        generated = true;
     }
     private void assignRoom(Clss c){
         //loop through rooms until an appropriate class is found then assign
@@ -55,8 +58,8 @@ public class AlgoDriver{
             TWO:
             for(int i = 0; i < days.length; i++) {
                 //if class already in day or course already has two classes in day move to next day
-                if(classInDay(c, days[i])) continue TWO;
-                if(courseMoreThanTwice(days[i], c.getC())) continue TWO;
+                //if(classInDay(c, days[i])) continue TWO;
+                //if(courseMoreThanTwice(days[i], c.getC())) continue TWO;
                 for (int j = 0; j < days[i].length; j++) {
                     if (days[i][j] == null && !conflict(c, i, j, rooms.get(k))) {//also ensure no conflicts
                         days[i][j] = c;
@@ -99,8 +102,9 @@ public class AlgoDriver{
     }
     private void saveRooms(){
         //store the time table in a file
+        //first get working directory of the app.
         try(
-                ObjectOutputStream fileOut = new ObjectOutputStream(new FileOutputStream("timetable.dat"))
+                ObjectOutputStream fileOut = new ObjectOutputStream(new FileOutputStream("./timetable.dat"))
         ){
             fileOut.writeObject(rooms);
         }catch(FileNotFoundException ex){

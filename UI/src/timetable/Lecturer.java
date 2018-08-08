@@ -2,7 +2,7 @@ package timetable;
 
 import java.io.Serializable;
 
-public class Lecturer implements Serializable {
+public class Lecturer implements Serializable{
 
     private String name;
     private String regNo;

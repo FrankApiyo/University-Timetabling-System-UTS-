@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class DbDriver {
-    private static final String dBase = "jdbc:mysql://localhost/utsbase?useSSL=false";
-    private static final String name = "brian";
-    private  static final String pwd = "23brian19";
+    private static final String dBase = "jdbc:mysql://localhost/utsbase";
+    private static final String name = "root";
+    private  static final String pwd = "Frankline";
     public Connection connectDb(String database, String username, String password){
         Connection connection = null;
         try{
@@ -112,7 +112,7 @@ public class DbDriver {
     }
     //I realized there is no need to implement this functionality sooo....
     /*
-    public void addClass(Clss c){
+    //public void addClass(Clss c){
         try{
             Statement statement = connectDb(dBase, name, pwd).createStatement();
             statement.executeUpdate("INSERT INTO Class VALUES('"+c.getL().getName()+"', '"+c.getU().getName()+"', '"+c.getC().getName()+"')");
