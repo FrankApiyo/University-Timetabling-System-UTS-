@@ -4,6 +4,7 @@ import javafx.scene.control.Alert;
 import javax.lang.model.type.ArrayType;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class DbDriver {
     private static final String dBase = "jdbc:mysql://localhost/utsbase?useSSL=false";
@@ -207,8 +208,8 @@ public class DbDriver {
         }
     }
 
-    public boolean addIEO(IEO ieo) {
-        boolean isAdded = false;
+    public String addIEO(IEO ieo) {
+        String message = "";
         try {
             Statement statement = connectDb(dBase,name,pwd).createStatement();
             statement.executeUpdate("INSERT INTO `IEO` VALUES ('"+ieo.getDepartment()+"'," +
@@ -217,14 +218,32 @@ public class DbDriver {
                     "'"+ieo.getFname()+"'," +
                     "'"+ieo.getLname()+"'," +
                     "'"+ieo.getPassword()+"');");
+            message = "Information Added";
 
-            isAdded = true;
+        }catch (SQLIntegrityConstraintViolationException e){
+            message = "Duplicate Entry";
+        }
+        catch (SQLException e){
+            message = "Something Went Wrong";
 
-
-        }catch (Exception e){
-            e.printStackTrace();
         }
 
-        return isAdded;
+        return message;
+    }
+
+    public ArrayList<? extends String> getDepartments() {
+        ArrayList<String> departments = new ArrayList<>();
+        try {
+            Statement statement = connectDb(dBase, name, pwd).createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT department FROM `DepFaculty`;");
+            while (resultSet.next()){
+                String dep = resultSet.getString(1);
+                departments.add(dep);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return departments;
     }
 }

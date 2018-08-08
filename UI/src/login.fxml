@@ -7,19 +7,72 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #CFD8DC;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login">
+<?import javafx.scene.text.Font?>
+<AnchorPane
+        maxHeight="-Infinity"
+        maxWidth="-Infinity"
+        minHeight="-Infinity"
+        minWidth="-Infinity"
+        prefHeight="400.0"
+        prefWidth="600.0"
+        style="-fx-background-color: #CFD8DC;"
+        xmlns="http://javafx.com/javafx/8.0.171"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="Login">
 
    <children>
-      <JFXTextField fx:id="username" labelFloat="true" layoutX="155.0" layoutY="126.0" prefHeight="45.0" prefWidth="290.0" promptText="Username" />
+      <JFXTextField
+              fx:id="username"
+              focusColor="#00c853"
+              labelFloat="true"
+              layoutX="155.0"
+              layoutY="126.0"
+              prefHeight="45.0"
+              prefWidth="290.0"
+              promptText="Username" >
+          <font>
+              <Font size="18.0" />
+          </font>
+      </JFXTextField>
 
-      <JFXPasswordField fx:id="password" labelFloat="true" layoutX="155.0" layoutY="199.0" prefHeight="45.0" prefWidth="290.0" promptText="Password" />
+      <JFXPasswordField
+              fx:id="password"
+              focusColor="#00c853"
+              labelFloat="true"
+              layoutX="155.0"
+              layoutY="199.0"
+              prefHeight="45.0"
+              prefWidth="290.0"
+              promptText="Password" >
+          <font>
+              <Font size="18.0" />
+          </font>
+      </JFXPasswordField>
 
-      <JFXButton fx:id="login_button" onAction="#login" buttonType="RAISED" layoutX="325.0" layoutY="284.0" prefHeight="49.0" prefWidth="120.0" ripplerFill="BLACK" style="-fx-background-color: #4CAF50;" text="LOGIN" />
+      <JFXButton
+              fx:id="login_button"
+              onAction="#login"
+              buttonType="RAISED"
+              layoutX="325.0"
+              layoutY="284.0"
+              prefHeight="49.0"
+              prefWidth="120.0"
+              ripplerFill="BLACK"
+              style="-fx-background-color: #00c853;"
+              text="LOGIN" >
+          <font>
+              <Font size="16.0" />
+          </font>
+      </JFXButton>
 
       <FontAwesomeIconView glyphName="USER" layoutX="133.0" layoutY="157.0" size="24.0" />
 
       <FontAwesomeIconView glyphName="LOCK" layoutX="134.0" layoutY="230.0" size="24.0" />
-      <Text fx:id="login_text" fill="#f44336" layoutX="155.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+       <Text fx:id="login_text" fill="#f44336" layoutX="155.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" >
+           <font>
+               <Font size="18.0" />
+           </font>
+       </Text>
 
    </children>
 </AnchorPane>
