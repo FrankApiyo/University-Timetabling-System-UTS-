@@ -12,16 +12,18 @@ public class AlgoDriver{
     public AlgoDriver(){
         DbDriver dbDriver = new DbDriver();
 
-        //rooms = dbDriver.getRooms();
+        rooms = dbDriver.getRooms();
+        classes = dbDriver.getClasses();
+        //generateTimetable();
         if(generated)
             getRoomFromFile();
-        classes = dbDriver.getClasses();
         //create timetable by assigning each class a room
         //generateTimetable();
         //saveRooms();
         //getRoomFromFile();
         // Test code-- prints out the timetable
-        /* Clss[][] slots = rooms.get(0).getDays();
+        /*
+        Clss[][] slots = rooms.get(0).getDays();
         for(Clss c : slots[0])
             System.out.print("SLOT\t\t");
         System.out.println();
@@ -37,8 +39,12 @@ public class AlgoDriver{
                 System.out.println();
             }
 
-        }
-        */
+        }*/
+    }
+    public static void main(String[] args){
+        //this method was used to test the methods in this class.
+        AlgoDriver driver = new AlgoDriver();
+        //driver.getClasses(1, new Course("COMPUTER SCIENCE", 2, 70));
     }
     public void generateTimetable(){
         for(Clss c: classes) {
@@ -58,8 +64,8 @@ public class AlgoDriver{
             TWO:
             for(int i = 0; i < days.length; i++) {
                 //if class already in day or course already has two classes in day move to next day
-                //if(classInDay(c, days[i])) continue TWO;
-                //if(courseMoreThanTwice(days[i], c.getC())) continue TWO;
+                if(classInDay(c, days[i])) continue TWO;
+                if(courseMoreThanTwice(days[i], c.getC())) continue TWO;
                 for (int j = 0; j < days[i].length; j++) {
                     if (days[i][j] == null && !conflict(c, i, j, rooms.get(k))) {//also ensure no conflicts
                         days[i][j] = c;
