@@ -61,11 +61,10 @@ public class AlgoDriver{
         for(int k = 0; k < rooms.size(); k++){
             if(c.getClassCount() <= 0) return;
             Clss[][] days = rooms.get(k).getDays();
-            TWO:
             for(int i = 0; i < days.length; i++) {
                 //if class already in day or course already has two classes in day move to next day
-                if(classInDay(c, days[i])) continue TWO;
-                if(courseMoreThanTwice(days[i], c.getC())) continue TWO;
+                if(classInDay(c, i)) continue;
+                if(courseMoreThanTwice(days[i], c.getC())) continue;
                 for (int j = 0; j < days[i].length; j++) {
                     if (days[i][j] == null && !conflict(c, i, j, rooms.get(k))) {//also ensure no conflicts
                         days[i][j] = c;
@@ -77,11 +76,14 @@ public class AlgoDriver{
             }
         }
     }
-    private boolean classInDay(Clss c, Clss[] day){
-        for(int i = 0; i < day.length; i++)
-            if(day[i] != null)
-                if(day[i].equals(c))
-                    return true;
+    private boolean classInDay(Clss c, int x){
+        for(Room r: rooms) {
+            Clss[] day = r.getDays()[x];
+            for (int i = 0; i < day.length; i++)
+                if (day[i] != null)
+                    if (day[i].equals(c))
+                        return true;
+        }
         return false;
     }
     //checks if course has had a class more than twice on on day
