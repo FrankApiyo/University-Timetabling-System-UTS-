@@ -3,7 +3,7 @@ import timetable.Day;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,7 +35,7 @@ public class SwitchRoomController implements Initializable {
     }
 
     public void backButt(ActionEvent event) throws IOException {
-        Parent backBut = FXMLLoader.load(getClass().getResource("manageTimetable.fxml"));
+        Parent backBut = FXMLLoader.load(getClass().getResource("resources/manageTimetable.fxml"));
         Scene backButScene = new Scene(backBut);
 
         Stage addRoomWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();

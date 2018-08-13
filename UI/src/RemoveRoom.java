@@ -50,7 +50,7 @@ public class RemoveRoom implements Initializable{
 
     }
     public void backButt(ActionEvent event) throws IOException{
-        Parent backBut = FXMLLoader.load(getClass().getResource("manageTimetable.fxml"));
+        Parent backBut = FXMLLoader.load(getClass().getResource("resources/manageTimetable.fxml"));
         Scene backButScene = new Scene(backBut);
 
         Stage backWindow = (Stage)((Node)event.getSource()).getScene().getWindow();

@@ -42,7 +42,6 @@ public class IeoController implements Initializable {
     }    
 
     private void submitt() {
-        tf_fname.requestFocus();
         if(pf_password.getText().equals(pf_cpassword.getText())){
             String message = db.addIEO(new IEO(cbox_department.getValue(),
                     tf_email.getText(),

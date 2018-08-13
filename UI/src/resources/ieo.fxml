@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IeoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="676.0" style="-fx-background-color: #C5E1A5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IeoController">
 
    <children>
       <Text layoutX="14.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Details">
@@ -66,7 +66,7 @@
       
       </JFXComboBox>
       <FontAwesomeIconView glyphName="BOOK" layoutX="31.0" layoutY="307.0" size="18.0" />
-      <Text fx:id="txt_message" fill="#c60a0a" fontSmoothingType="LCD" layoutX="60.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="271.0000021196902">
+      <Text fx:id="txt_message" fill="#c70400" fontSmoothingType="LCD" layoutX="60.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="271.0000021196902">
          <font>
             <Font size="18.0" />
          </font>

@@ -17,13 +17,13 @@ public class ManageTT implements Initializable{
         
     }
     public void removeLecturer(ActionEvent event) throws  IOException{
-        Parent parent = FXMLLoader.load(getClass().getResource("removeLecturer.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("resources/removeLecturer.fxml"));
         Stage stage = ((Stage)((Node)event.getSource()).getScene().getWindow());
         stage.setScene(new Scene(parent));
         //stage.show();
     }
     public void addLecturer(ActionEvent event)throws IOException{
-        Parent addLec = FXMLLoader.load(getClass().getResource("addLecturer.fxml"));
+        Parent addLec = FXMLLoader.load(getClass().getResource("resources/addLecturer.fxml"));
         Scene addLecScene = new Scene(addLec);
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -31,7 +31,7 @@ public class ManageTT implements Initializable{
         stage.show();
     }
     public void switchRButt(ActionEvent event) throws IOException{
-        Parent switchBut = FXMLLoader.load(getClass().getResource("switchRoom.fxml"));
+        Parent switchBut = FXMLLoader.load(getClass().getResource("resources/switchRoom.fxml"));
         Scene sRoomScene = new Scene(switchBut);
         
         Stage addRoomWindow = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -40,7 +40,7 @@ public class ManageTT implements Initializable{
     }
     
     public void backButt(ActionEvent event) throws IOException{
-        Parent backBut = FXMLLoader.load(getClass().getResource("homeV2.fxml"));
+        Parent backBut = FXMLLoader.load(getClass().getResource("resources/homeV2.fxml"));
         Scene backButScene = new Scene(backBut);
         
         Stage backWindow = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -49,7 +49,7 @@ public class ManageTT implements Initializable{
     }
     
     public void addRoomSceenButt(ActionEvent event) throws IOException {
-        Parent addRoomBut = FXMLLoader.load(getClass().getResource("addRoom.fxml"));
+        Parent addRoomBut = FXMLLoader.load(getClass().getResource("resources/addRoom.fxml"));
         Scene addButScene = new Scene(addRoomBut);
 
         Stage addRoomWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -58,7 +58,7 @@ public class ManageTT implements Initializable{
     }
     
     public void removeRoomButt(ActionEvent event) throws IOException {
-        Parent removeRoomBut = FXMLLoader.load(getClass().getResource("removeRoom.fxml"));
+        Parent removeRoomBut = FXMLLoader.load(getClass().getResource("resources/removeRoom.fxml"));
         Scene removeButScene = new Scene(removeRoomBut);
 
         Stage removeRoomWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -69,7 +69,7 @@ public class ManageTT implements Initializable{
      public void okButt(ActionEvent event) throws IOException {
          AlgoDriver driver  = new AlgoDriver();
          driver.generateTimetable();
-        Parent okBut = FXMLLoader.load(getClass().getResource("displayTT.fxml"));
+        Parent okBut = FXMLLoader.load(getClass().getResource("resources/displayTT.fxml"));
         Scene removeButScene = new Scene(okBut);
 
         Stage removeRoomWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
