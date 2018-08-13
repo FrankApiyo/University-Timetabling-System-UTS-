@@ -14,7 +14,7 @@ session_start();
     <body class="index">
 
     <h1>UNIVERSITY-TIMETABLING-SYSTEM(UTS)</h1>
-    <div class="logoutdiv">
+    <div class="logout">
         <a href="logout.php">
             <button class="btn btn-warning">Logout</button>
         </a>

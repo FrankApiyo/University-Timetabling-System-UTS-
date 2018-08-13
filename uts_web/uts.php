@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+<?php if (isset($_SESSION['email'])): ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -29,7 +33,7 @@
     <?php endif; ?>
 <?php endif; ?>
 
-<form>
+<form action="add-unit.php" method="get">
     <table class="table-bordered" id="myTable">
         <tr>
             <th>UNIT NAME</th>
@@ -123,3 +127,8 @@
 <script src="js/index.js"></script>
 </body>
 </html>
+<?php else: ?>
+    <?php
+    header("Location: index.php");
+    ?>
+<?php endif; ?>

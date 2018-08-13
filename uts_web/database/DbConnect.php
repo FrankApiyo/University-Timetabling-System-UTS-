@@ -15,13 +15,14 @@ class DbConnect
     private $dbName = DB_NAME;
     private $dbUser = DB_USER;
 
+    //constructor
     function __construct()
     {
 
         $this->connect();
 
     }
-
+//connect to database
     function connect() {
         try{
         $this->pdo = new PDO('mysql:host='.$this->host.';dbname='.$this->dbName, $this->dbUser);

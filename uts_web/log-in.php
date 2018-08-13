@@ -1,29 +1,28 @@
 <?php
-session_start();
+session_start();//start session
 require_once "./database/DbConnect.php";
 
-$db=new DbConnect();
+//instantiate DbConnect class
+$db = new DbConnect();
 
-//get user's information
-$email=$_POST['email'];
-$password=$_POST['password'];
+//get input values from login form
+$email = $_POST['email'];
+$password = $_POST['password'];
 
-$result="SELECT * FROM users WHERE email=:email";
+//query database
+$query = "SELECT * FROM ieo WHERE email=:email AND password=:pwd";
 
-$result = $db->prepareSmt($result);
+$query = $db->prepareSmt($query);
 
-$result->bindParam(":email", $email);
+$query->bindParam(":pwd", $password);
+$query->bindParam(":email", $email);
 
-$result->execute();
+$query->execute();//execute query
 
-if($result->rowCount() > 0) {
-    $user = $result->FETCH(PDO::FETCH_OBJ);
-    if(password_verify($password, $user->password)){
-$_SESSION['email'] = $user->email;
-        header("Location: year.php");
-    } else {
-        header("Location: index.php?error=invalid");
-    }
+if ($query->rowCount() > 0) {
+    $user = $query->fetch(PDO::FETCH_OBJ);
+    $_SESSION['email'] = $user->email;
+    header("Location: year.php");
 } else {
     header("Location: index.php?error=invalid");
 }
