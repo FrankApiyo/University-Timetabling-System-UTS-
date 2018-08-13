@@ -39,7 +39,7 @@ public class AddRoom implements Initializable{
     private ToggleGroup disToggle;
 
     public void backButt(ActionEvent event) throws IOException{
-        Parent backBut = FXMLLoader.load(getClass().getResource("manageTimetable.fxml"));
+        Parent backBut = FXMLLoader.load(getClass().getResource("resources/manageTimetable.fxml"));
         Scene backButScene = new Scene(backBut);
 
         Stage addRoomWindow = (Stage)((Node)event.getSource()).getScene().getWindow();

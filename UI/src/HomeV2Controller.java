@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -25,19 +24,19 @@ public class HomeV2Controller implements Initializable {
     @FXML
     private BorderPane border_pane;
     @FXML
-    private Button btn;
+    private Button btn_request_req;
     @FXML
-    private Button btn1;
+    private Button btn_check_req;
     @FXML
-    private Button btn2;
+    private Button btn_display_timetable;
     @FXML
-    private Button btn3;
+    private Button btn_generate_timetable;
     @FXML
-    private Button btn4;
+    private Button btn_manage_timetable;
     @FXML
-    private Button btn5;
+    private Button btn_send_timetable;
     @FXML
-    private Button btn6;
+    private Button btn_show_ieo;
     
     
     /**
@@ -45,6 +44,7 @@ public class HomeV2Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        border_pane.setStyle("-fx-background-color: #C5E1A5;");
          
     }    
     /**
@@ -54,7 +54,7 @@ public class HomeV2Controller implements Initializable {
      */
     @FXML
     private void show_request_req(MouseEvent event) throws IOException {
-        DynamicView.loadBorderCenter(border_pane, "reqRequest.fxml");
+        DynamicView.loadBorderCenter(border_pane, "resources/reqRequest.fxml");
     }
     
     /**
@@ -64,32 +64,32 @@ public class HomeV2Controller implements Initializable {
      */
     @FXML
     private void showCheckReq(MouseEvent event) throws IOException {
-        DynamicView.loadBorderCenter(border_pane, "checkReq.fxml");
+        DynamicView.loadBorderCenter(border_pane, "resources/checkReq.fxml");
     }
 
     @FXML
     private void showDisplayTimetable(MouseEvent event) throws IOException {
-        DynamicView.loadBorderCenter(border_pane, "displayTT.fxml");
+        DynamicView.loadBorderCenter(border_pane, "resources/displayTT.fxml");
     }
 
     @FXML
     private void showGenerateTimetable(MouseEvent event) throws IOException {
-        DynamicView.loadBorderCenter(border_pane, "generateTimetable.fxml");
+        DynamicView.loadBorderCenter(border_pane, "resources/generateTimetable.fxml");
     }
 
     @FXML
     private void showManageTimetable(MouseEvent event) throws IOException {
-        DynamicView.loadBorderCenter(border_pane, "manageTimetable.fxml");
+        DynamicView.loadBorderCenter(border_pane, "resources/manageTimetable.fxml");
     }
 
     @FXML
     private void showSendTimetable(MouseEvent event) throws IOException {
-        DynamicView.loadBorderCenter(border_pane, "sendTT.fxml");
+        DynamicView.loadBorderCenter(border_pane, "resources/sendTT.fxml");
     }
 
     @FXML
     private void showLogin(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("resources/login.fxml"));
 
         Stage addRoomWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
         addRoomWindow.setScene(new Scene(root));
@@ -101,69 +101,69 @@ public class HomeV2Controller implements Initializable {
      */
     @FXML
     private void showIEO(MouseEvent event) throws IOException{
-        DynamicView.loadBorderCenter(border_pane, "ieo.fxml");
+        DynamicView.loadBorderCenter(border_pane, "resources/ieo.fxml");
     }
     
     
 
     @FXML
     private void menuDecoratorE(MouseEvent event) {
-        btn.setStyle("-fx-background-color:#43a047");
+        btn_request_req.setStyle("-fx-background-color:#43a047");
     }
     @FXML
     private void menuDecoratorE1(MouseEvent event) {
-        btn1.setStyle("-fx-background-color:#43a047");
+        btn_check_req.setStyle("-fx-background-color:#43a047");
     }
     @FXML
     private void menuDecoratorE2(MouseEvent event) {
-        btn2.setStyle("-fx-background-color:#43a047");
+        btn_display_timetable.setStyle("-fx-background-color:#43a047");
     }
     @FXML
     private void menuDecoratorE3(MouseEvent event) {
-        btn3.setStyle("-fx-background-color:#43a047");
+        btn_generate_timetable.setStyle("-fx-background-color:#43a047");
     }
     @FXML
     private void menuDecoratorE4(MouseEvent event) {
-        btn4.setStyle("-fx-background-color:#43a047");
+        btn_manage_timetable.setStyle("-fx-background-color:#43a047");
     }
     @FXML
     private void menuDecoratorE5(MouseEvent event) {
-        btn5.setStyle("-fx-background-color:#43a047");
+        btn_send_timetable.setStyle("-fx-background-color:#43a047");
     }
     @FXML
     private void menuDecoratorE6(MouseEvent event) {
-        btn6.setStyle("-fx-background-color:#43a047");
+        btn_show_ieo.setStyle("-fx-background-color:#43a047");
     }
     
     
     @FXML
     private void menuDecoratorX(MouseEvent event) {
-        btn.setStyle("-fx-background-color:#ffffff");
+        btn_request_req.setStyle("-fx-background-color:#ffffff");
     }
     
     @FXML
     private void menuDecoratorX1(MouseEvent event) {
-        btn1.setStyle("-fx-background-color:#ffffff");
+        btn_check_req.setStyle("-fx-background-color:#ffffff");
     }
     @FXML
     private void menuDecoratorX2(MouseEvent event) {
-        btn2.setStyle("-fx-background-color:#ffffff");
+        btn_display_timetable.setStyle("-fx-background-color:#ffffff");
     }
     @FXML
     private void menuDecoratorX3(MouseEvent event) {
-        btn3.setStyle("-fx-background-color:#ffffff");
+        btn_generate_timetable.setStyle("-fx-background-color:#ffffff");
     }
     @FXML
     private void menuDecoratorX4(MouseEvent event) {
-        btn4.setStyle("-fx-background-color:#ffffff");
+        btn_manage_timetable.setStyle("-fx-background-color:#ffffff");
     }
     @FXML
     private void menuDecoratorX5(MouseEvent event) {
-        btn5.setStyle("-fx-background-color:#ffffff");
+        btn_send_timetable.setStyle("-fx-background-color:#ffffff");
     }
     @FXML
     private void menuDecoratorX6(MouseEvent event) {
-        btn6.setStyle("-fx-background-color:#ffffff");
+        btn_show_ieo.setStyle("-fx-background-color:#ffffff");
     }
     
     

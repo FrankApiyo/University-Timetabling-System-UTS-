@@ -45,10 +45,12 @@ public class Login implements Initializable {
         if (username.getText().equals(uName) && password.getText().equals(pWd)) {
             //start next scene.
             //System.out.println("correct");
-            Parent root = FXMLLoader.load(getClass().getResource("homeV2.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("resources/homeV2.fxml"));
             Scene scene = new Scene(root);
             Stage stage = (Stage) username.getScene().getWindow();
             stage.setScene(scene);
+            stage.setMaximized(true);
+            stage.setFullScreen(true);
         } else {
             //show warning.
             login_text.setText("Incorrect Credentials");

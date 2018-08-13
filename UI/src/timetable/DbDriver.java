@@ -8,8 +8,8 @@ import java.util.Collection;
 
 public class DbDriver {
     private static final String dBase = "jdbc:mysql://localhost/utsbase";
-    private static final String name = "root";
-    private  static final String pwd = "Frankline";
+    private static final String name = "brian";
+    private  static final String pwd = "23brian19";
     public Connection connectDb(String database, String username, String password){
         Connection connection = null;
         try{
@@ -231,7 +231,7 @@ public class DbDriver {
         return message;
     }
 
-    public ArrayList<? extends String> getDepartments() {
+    public ArrayList<String> getDepartments() {
         ArrayList<String> departments = new ArrayList<>();
         try {
             Statement statement = connectDb(dBase, name, pwd).createStatement();
