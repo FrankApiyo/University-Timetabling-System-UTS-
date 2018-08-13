@@ -12,33 +12,7 @@ public class AlgoDriver{
     public AlgoDriver(){
         DbDriver dbDriver = new DbDriver();
         classes = dbDriver.getClasses();
-        //generateTimetable();
-        if(generated)
-            getRoomFromFile();
-        else rooms = dbDriver.getRooms();
-        //create timetable by assigning each class a room
-        //generateTimetable();
-        //saveRooms();
-        //getRoomFromFile();
-        // Test code-- prints out the timetable
-        /*
-        Clss[][] slots = rooms.get(0).getDays();
-        for(Clss c : slots[0])
-            System.out.print("SLOT\t\t");
-        System.out.println();
-        for(Room r: rooms){
-            System.out.println("\n\n"+r.getName());
-            Clss[][] s = r.getDays();
-            for(int i = 0; i < s.length; i++) {
-                for (int j = 0; j < s[i].length; j++)
-                    if(s[i][j] != null)
-                        System.out.print(s[i][j].getU().getCode() + "\t\t");
-                    else
-                        System.out.print(null + "\t\t");
-                System.out.println();
-            }
-
-        }*/
+        getRoomFromFile();
     }
     public static void main(String[] args){
         //this method was used to test the methods in this class.
@@ -127,6 +101,8 @@ public class AlgoDriver{
         ){
             rooms = (ArrayList<Room>) fileOut.readObject();
         }catch(FileNotFoundException ex){
+            DbDriver driver = new DbDriver();
+            rooms = driver.getRooms();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error");
             alert.setHeaderText("file system error error");
@@ -154,17 +130,10 @@ public class AlgoDriver{
             Clss[][] clsses = r.getDays();
                 for(int i = 0; i < clsses[dayNumber].length; i++){
                     if(clsses[dayNumber][i] != null) {
-                        //System.out.println("\n\n"+clsses[dayNumber][i].getC().getName()+"\t"+clsses[dayNumber][i].getC().getYear());
-                        //System.out.println(c.getName()+"\t"+c.getYear());
-                        //System.out.println(clsses[dayNumber][i].getC().equals(c));
                         if (clsses[dayNumber][i].getC().equals(c)) {
-                            //System.out.println(c.getName());
-                            //for the string that represents the lesson. i.e.
-                            //A concatenation of the unit code, ', ', and the venue.
                             String code = clsses[dayNumber][i].getU().getCode();
                             String venue = r.getName();
                             String s = code + ", " + venue;
-                            //System.out.println(day.getWeekDay()+"\t"+s+"\t"+i);
                             day.setSlot(s, i);
                         }
                     }
