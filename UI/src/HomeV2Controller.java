@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import timetable.GoogleMail;
 
 /**
  * FXML Controller class
@@ -34,6 +35,11 @@ public class HomeV2Controller implements Initializable {
     @FXML
     private void show_request_req(MouseEvent event) throws IOException {
         DynamicView.loadBorderCenter(border_pane, "reqRequest.fxml");
+        try {
+            GoogleMail.Send("franklineapiyo", "franklineapiyo1997", "franklineappy@gmail.com", "", "TIMETABLING DEPARTMENT REQUIREMENT SUBMISSION", "PLEASE JUST SUBMIT REQUIREMENTS");
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
     }
 
     @FXML

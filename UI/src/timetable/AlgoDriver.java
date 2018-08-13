@@ -8,15 +8,14 @@ import java.io.*;
 public class AlgoDriver{
     static ArrayList<Room> rooms = new ArrayList<>();
     static ArrayList<Clss> classes = new ArrayList<>();
-    static boolean generated = false;
+    static boolean generated;
     public AlgoDriver(){
         DbDriver dbDriver = new DbDriver();
-
-        rooms = dbDriver.getRooms();
         classes = dbDriver.getClasses();
         //generateTimetable();
         if(generated)
             getRoomFromFile();
+        else rooms = dbDriver.getRooms();
         //create timetable by assigning each class a room
         //generateTimetable();
         //saveRooms();
