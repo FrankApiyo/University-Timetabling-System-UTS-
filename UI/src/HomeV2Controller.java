@@ -2,6 +2,8 @@
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -55,7 +57,6 @@ public class HomeV2Controller implements Initializable {
      */
     @FXML
     private void show_request_req(MouseEvent event) throws IOException {
-        DynamicView.loadBorderCenter(border_pane, "reqRequest.fxml");
         DynamicView.loadBorderCenter(border_pane, "resources/reqRequest.fxml");
     }
     
@@ -80,9 +81,12 @@ public class HomeV2Controller implements Initializable {
     }
 
     @FXML
-    private void showManageTimetable(MouseEvent event) throws IOException {
+    private void showManageTimetable(MouseEvent event) throws IOException  {
         DynamicView.loadBorderCenter(border_pane, "resources/manageTimetable.fxml");
+
+
     }
+
 
     @FXML
     private void showSendTimetable(MouseEvent event) throws IOException {

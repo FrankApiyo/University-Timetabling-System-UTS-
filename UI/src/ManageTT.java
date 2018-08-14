@@ -1,79 +1,52 @@
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXTabPane;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Tab;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import timetable.AlgoDriver;
 
 public class ManageTT implements Initializable{
 
+    @FXML JFXTabPane managett_tabpane;
+    Tab lecturer_tab = new Tab("Lecturer");
+    Tab room_tab = new Tab("Rooms");
+    Tab switch_room_tab = new Tab("Switch Room");
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }
-    public void removeLecturer(ActionEvent event) throws  IOException{
-        Parent parent = FXMLLoader.load(getClass().getResource("resources/removeLecturer.fxml"));
-        Stage stage = ((Stage)((Node)event.getSource()).getScene().getWindow());
-        stage.setScene(new Scene(parent));
-        //stage.show();
-    }
-    public void addLecturer(ActionEvent event)throws IOException{
-        Parent addLec = FXMLLoader.load(getClass().getResource("resources/addLecturer.fxml"));
-        Scene addLecScene = new Scene(addLec);
 
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(addLecScene);
-        stage.show();
-    }
-    public void switchRButt(ActionEvent event) throws IOException{
-        Parent switchBut = FXMLLoader.load(getClass().getResource("resources/switchRoom.fxml"));
-        Scene sRoomScene = new Scene(switchBut);
-        
-        Stage addRoomWindow = (Stage)((Node)event.getSource()).getScene().getWindow();
-        addRoomWindow.setScene(sRoomScene);
-        addRoomWindow.show();
-    }
-    
-    public void backButt(ActionEvent event) throws IOException{
-        Parent backBut = FXMLLoader.load(getClass().getResource("resources/homeV2.fxml"));
-        Scene backButScene = new Scene(backBut);
-        
-        Stage backWindow = (Stage)((Node)event.getSource()).getScene().getWindow();
-        backWindow.setScene(backButScene);
-        backWindow.show();
-    }
-    
-    public void addRoomSceenButt(ActionEvent event) throws IOException {
-        Parent addRoomBut = FXMLLoader.load(getClass().getResource("resources/addRoom.fxml"));
-        Scene addButScene = new Scene(addRoomBut);
 
-        Stage addRoomWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        addRoomWindow.setScene(addButScene);
-        addRoomWindow.show();
-    }
-    
-    public void removeRoomButt(ActionEvent event) throws IOException {
-        Parent removeRoomBut = FXMLLoader.load(getClass().getResource("resources/removeRoom.fxml"));
-        Scene removeButScene = new Scene(removeRoomBut);
+        try{
+        lecturer_tab.setContent(FXMLLoader.load(getClass().getResource("resources/lecturer.fxml")));
+        lecturer_tab.setClosable(false);
+        room_tab.setContent(FXMLLoader.load(getClass().getResource("resources/rooms.fxml")));
+        room_tab.setClosable(false);
+        switch_room_tab.setContent(FXMLLoader.load(getClass().getResource("resources/switchRoom.fxml")));
+        switch_room_tab.setClosable(false);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
 
-        Stage removeRoomWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        removeRoomWindow.setScene(removeButScene);
-        removeRoomWindow.show();
-    }
-    
-     public void okButt(ActionEvent event) throws IOException {
-         AlgoDriver driver  = new AlgoDriver();
-         driver.generateTimetable();
-        Parent okBut = FXMLLoader.load(getClass().getResource("resources/displayTT.fxml"));
-        Scene removeButScene = new Scene(okBut);
+        managett_tabpane.getTabs().add(lecturer_tab);
+        managett_tabpane.getTabs().add(room_tab);
+        managett_tabpane.getTabs().add(switch_room_tab);
 
-        Stage removeRoomWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        removeRoomWindow.setScene(removeButScene);
-        removeRoomWindow.show();
+    }
+
+    public JFXTabPane getManagett_tabPane() {
+        return managett_tabpane;
     }
 }
