@@ -160,7 +160,7 @@ DROP TABLE IF EXISTS `Room`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Room` (
   `d9F10` int(1) NOT NULL,
-  `boardType` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `boardType` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   `capacity` int(11) NOT NULL,
   `name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lab` tinyint(1) DEFAULT NULL,

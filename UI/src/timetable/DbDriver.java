@@ -1,13 +1,15 @@
 package timetable;
 import javafx.scene.control.Alert;
 
+import javax.lang.model.type.ArrayType;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class DbDriver {
     private static final String dBase = "jdbc:mysql://localhost/utsbase";
-    private static final String name = "brian";
-    private  static final String pwd = "23brian19";
+    private static final String name = "root";
+    private  static final String pwd = "Frankline";
     public Connection connectDb(String database, String username, String password){
         Connection connection = null;
         try{
@@ -91,8 +93,8 @@ public class DbDriver {
     public boolean addRoom(Room r){
         try{
             Statement statement = connectDb(dBase, name, pwd).createStatement();
-            //System.out.println("\n\n"+"INSERT INTO Room VALUES("+(r.isDisabilityFriendly()?1:0)+", '"+r.getBoardType()+"', "+r.getCapacity()+", '"+r.getName()+"', "+r.isLab()+");"+"\n\n");
-            statement.executeUpdate("INSERT INTO Room VALUES("+(r.isDisabilityFriendly()?1:0)+", '"+r.getBoardType()+"', "+r.getCapacity()+", '"+r.getName()+"', "+r.isLab()+");");
+            //System.out.println("\n\n"+"INSERT INTO Room VALUES("+(r.isdF()?1:0)+", '"+r.getBoardType()+"', "+r.getCapacity()+", '"+r.getName()+"', "+r.isLab()+");"+"\n\n");
+            statement.executeUpdate("INSERT INTO Room VALUES("+(r.isdF()?1:0)+", '"+r.getBoardType()+"', "+r.getCapacity()+", '"+r.getName()+"', "+r.isLab()+");");
         }catch(SQLIntegrityConstraintViolationException | SQLSyntaxErrorException ex){
             //TODOne add this exception's message to the ui.
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

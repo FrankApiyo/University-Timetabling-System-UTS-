@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #c5e1a5;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #c5e1a5;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManageTT">
   <children>
       <VBox alignment="CENTER">
          <children>
@@ -25,7 +25,7 @@
       </VBox>
       <VBox alignment="CENTER">
          <children>
-            <Button defaultButton="true" mnemonicParsing="false" text="OKAY">
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#okButt" text="OKAY">
                <font>
                   <Font name="Bell MT" size="15.0" />
                </font>

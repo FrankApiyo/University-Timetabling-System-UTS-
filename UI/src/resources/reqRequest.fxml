@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="700.0" prefWidth="970.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="700.0" prefWidth="970.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManageTT">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="700.0" prefWidth="970.0" style="-fx-background-color: #c5e1a5;" VBox.vgrow="ALWAYS">
          <children>
-            <Button layoutX="455.0" layoutY="430.0" mnemonicParsing="false"  style="-fx-background-color: #ff5252;" text="BACK">
+            <Button layoutX="455.0" layoutY="430.0" mnemonicParsing="false" onAction="#backButt" style="-fx-background-color: #ff5252;" text="BACK">
                <font>
                   <Font name="Bell MT" size="15.0" />
                </font>

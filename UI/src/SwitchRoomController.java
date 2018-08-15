@@ -1,5 +1,4 @@
 
-import javafx.collections.FXCollections;
 import timetable.Day;
 import java.io.IOException;
 import java.net.URL;
@@ -45,7 +44,7 @@ public class SwitchRoomController implements Initializable {
     }
 
     private ObservableList<Day> getDays() {
-
+        /*
         ObservableList<Day> days = FXCollections.observableArrayList();
 
         days.add(new Day("Monday"));
@@ -53,7 +52,8 @@ public class SwitchRoomController implements Initializable {
         days.add(new Day("Wednesday"));
         days.add(new Day("Thursday"));
         days.add(new Day("Friday"));
-        return days;
+        */
+        return null;
 
     }
 

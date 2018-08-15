@@ -4,20 +4,20 @@ import java.io.Serializable;
 
 public class Room implements  Comparable<Room>, Serializable{
     private int capacity;
-    private boolean isDisabilityFriendly;
+    private boolean dF;
     private boolean lab;
     private String name;
     private String boardType;
     private Clss[][] days = new Clss[5][11];
-    public Room(String name, int capacity, boolean isDisabilityFriendly, boolean lab, String boardType){
+    public Room(String name, int capacity, boolean dF, boolean lab, String boardType){
         this.name = name;
         this.capacity = capacity;
-        this.isDisabilityFriendly = isDisabilityFriendly;
+        this.dF = dF;
         this.lab = lab;
         this.boardType = boardType;
     }
-    public boolean isDisabilityFriendly() {
-        return isDisabilityFriendly;
+    public boolean isdF() {
+        return dF;
     }
 
     public boolean isLab() {
