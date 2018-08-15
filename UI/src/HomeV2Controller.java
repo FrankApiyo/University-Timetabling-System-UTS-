@@ -70,6 +70,11 @@ public class HomeV2Controller implements Initializable {
     }
 
     @FXML
+    private void showReqReceived(MouseEvent event) throws IOException {
+        DynamicView.loadBorderCenter(border_pane, "resources/reqRequest.fxml");
+    }
+
+    @FXML
     private void showDisplayTimetable(MouseEvent event) throws IOException {
         DynamicView.loadBorderCenter(border_pane, "resources/displayTT.fxml");
     }

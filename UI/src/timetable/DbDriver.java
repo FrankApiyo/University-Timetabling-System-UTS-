@@ -9,7 +9,7 @@ import java.util.Collection;
 public class DbDriver {
     private static final String dBase = "jdbc:mysql://localhost/utsbase";
     private static final String name = "root";
-    private  static final String pwd = "Frankline";
+    private  static final String pwd = "kidflash";
     public Connection connectDb(String database, String username, String password){
         Connection connection = null;
         try{

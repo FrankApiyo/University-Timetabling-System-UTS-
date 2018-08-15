@@ -92,9 +92,12 @@ public class DisplayTT implements Initializable {
         //get selected course
         String courseName = course.getValue();
         int courseYear = 0;
-        if(year.getValue() == null)
+        try{if(year.getValue() == null)
             return;
         else courseYear = year.getValue();
+        }catch (ClassCastException e){
+
+        }
         Course selectedCourse = null;
         for(Course c : courses)
             if(c.getName().compareTo(courseName) == 0 && c.getYear() == courseYear)
@@ -103,17 +106,12 @@ public class DisplayTT implements Initializable {
         AlgoDriver driver = new AlgoDriver();
         for(int i = 0; i < days.length; i++){
             days[i] = driver.getClasses(i, selectedCourse);
-            //System.out.println(i+"\n"+ (days[i] == null));
-            //System.out.println("DisplayTT107"+"\t"+days[i].getWeekDay()+"\t"+days[i].getC1()+"\t"+days[i].getC2()+"\t"+days[i].getC3()+"\t"+days[i].getC4()+"\t"+days[i].getC5()+"\t"+days[i].getC6()+"\t"+days[i].getC7()+"\t"+days[i].getC8()+"\t"+days[i].getC9()+"\t"+days[i].getC10()+"\t"+days[i].getC11());
-
 
         }
 
         ObservableList<Day> data =
-                FXCollections.observableArrayList(
-                       //new Day("Monday")
-                        days
-                );
+                FXCollections.observableArrayList(days);
+
         timetable.setItems(data);
         dayColumn.setCellValueFactory(
                 new PropertyValueFactory<>("weekDay")

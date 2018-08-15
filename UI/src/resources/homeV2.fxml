@@ -14,7 +14,7 @@
                <children>
                   <VBox prefHeight="80.0" prefWidth="237.0">
                      <children>
-                        <Button fx:id="btn_request_req" alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#show_request_req" onMouseEntered="#menuDecoratorE" onMouseExited="#menuDecoratorX" prefHeight="59.0" prefWidth="207.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0px; -fx-cursor: hand;" text="REQUEST REQUIREMENTS">
+                        <Button fx:id="btn_request_req" alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#showReqReceived" onMouseEntered="#menuDecoratorE" onMouseExited="#menuDecoratorX" prefHeight="59.0" prefWidth="207.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0px; -fx-cursor: hand;" text="REQUEST REQUIREMENTS">
                            <VBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>

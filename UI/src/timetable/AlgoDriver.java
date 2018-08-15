@@ -7,6 +7,7 @@ import java.io.*;
 
 public class AlgoDriver{
     static ArrayList<Room> rooms = new ArrayList<>();
+    ArrayList<Room> availableRooms = new ArrayList<>();
     static ArrayList<Clss> classes = new ArrayList<>();
     static boolean generated;
     public AlgoDriver(){
@@ -27,6 +28,14 @@ public class AlgoDriver{
         saveRooms();
         generated = true;
     }
+    public void getAvailableRooms(){
+        for(int i = 0; i < rooms.size(); i++){
+           // if (assignRoom(Clss ) == null){
+
+            }
+        //}
+    }
+
     private void assignRoom(Clss c){
         //loop through rooms until an appropriate class is found then assign
 
