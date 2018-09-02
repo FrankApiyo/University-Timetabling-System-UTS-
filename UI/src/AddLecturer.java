@@ -33,7 +33,7 @@ public class AddLecturer implements Initializable {
         }
     }
     public void back()throws IOException {
-        Parent backBut = FXMLLoader.load(getClass().getResource("resources/manageTimetable.fxml"));
+        Parent backBut = FXMLLoader.load(getClass().getResource("resources/homeV2.fxml"));
         Scene backButScene = new Scene(backBut);
 
         Stage addRoomWindow = (Stage)regNo.getScene().getWindow();

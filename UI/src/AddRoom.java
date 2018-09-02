@@ -1,7 +1,6 @@
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import timetable.DbDriver;
 import timetable.Room;
 import javafx.event.ActionEvent;
@@ -39,7 +38,7 @@ public class AddRoom implements Initializable{
     private ToggleGroup disToggle;
 
     public void backButt(ActionEvent event) throws IOException{
-        Parent backBut = FXMLLoader.load(getClass().getResource("resources/manageTimetable.fxml"));
+        Parent backBut = FXMLLoader.load(getClass().getResource("resources/homeV2.fxml"));
         Scene backButScene = new Scene(backBut);
 
         Stage addRoomWindow = (Stage)((Node)event.getSource()).getScene().getWindow();

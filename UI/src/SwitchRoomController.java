@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.Set;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -63,7 +62,7 @@ public class SwitchRoomController implements Initializable {
     }
 
     public void backButt(ActionEvent event) throws IOException {
-        Parent backBut = FXMLLoader.load(getClass().getResource("resources/manageTimetable.fxml"));
+        Parent backBut = FXMLLoader.load(getClass().getResource("resources/homeV2.fxml"));
         Scene backButScene = new Scene(backBut);
 
         Stage addRoomWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
