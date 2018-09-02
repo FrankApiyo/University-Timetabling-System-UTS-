@@ -9,7 +9,7 @@ import java.util.Collection;
 public class DbDriver {
     private static final String dBase = "jdbc:mysql://localhost/utsbase";
     private static final String name = "root";
-    private  static final String pwd = "Frankline";
+    private  static final String pwd = "";
     public Connection connectDb(String database, String username, String password){
         Connection connection = null;
         try{
@@ -245,5 +245,20 @@ public class DbDriver {
             e.printStackTrace();
         }
         return departments;
+    }
+    
+    public String getEmail() {
+        String ieoMail;
+        try {
+            Statement statement = connectDb(dBase, name, pwd).createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT email FROM `ieo`;");
+            while (resultSet.next()){
+                ieoMail = resultSet.getString(1);
+                return ieoMail;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
