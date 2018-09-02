@@ -62,7 +62,7 @@
       <FontAwesomeIconView glyphName="PHONE" layoutX="31.0" layoutY="166.0" size="18.0" />
       <FontAwesomeIconView glyphName="AT" layoutX="311.0" layoutY="166.0" size="18.0" />
       <FontAwesomeIconView glyphName="LOCK" layoutX="31.0" layoutY="358.0" size="18.0" />
-      <JFXComboBox fx:id="cbox_department" focusColor="#00c853" labelFloat="true" layoutX="54.0" layoutY="274.0" prefHeight="35.0" prefWidth="235.0" promptText="Department" style="-fx-font-size: 18;">
+      <JFXComboBox fx:id="cbox_department" layoutX="54.0" layoutY="274.0" prefHeight="35.0" prefWidth="235.0" promptText="Department" style="-fx-font-size: 18;">
       
       </JFXComboBox>
       <FontAwesomeIconView glyphName="BOOK" layoutX="31.0" layoutY="307.0" size="18.0" />
