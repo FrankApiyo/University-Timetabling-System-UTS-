@@ -5,6 +5,7 @@ import javax.lang.model.type.ArrayType;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 
 public class DbDriver {
     private static final String dBase = "jdbc:mysql://localhost/utsbase";
@@ -245,5 +246,35 @@ public class DbDriver {
             e.printStackTrace();
         }
         return departments;
+    }
+    public boolean checkRequirementsAvailable(){
+        //TODOne -- return true if at least one entry and false otherwise
+        boolean empty = false;
+        try{
+            Statement statement = connectDb(dBase, name, pwd).createStatement();
+            ResultSet resultset = statement.executeQuery("SELECT * FROM RequirementsReceived");
+            while(resultset.next()){
+                empty = true;
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return empty;
+    }
+    public HashMap<String, Date> getRequirementDates(){
+        //TODOne -- return a hashmap containing all the department - date pairs
+        HashMap<String, Date> map = new HashMap<>();
+        try{
+            Statement statement = connectDb(dBase, name, pwd).createStatement();
+            ResultSet resultset = statement.executeQuery("SELECT * FROM RequirementsReceived");
+            while(resultset.next()){
+                String dep = resultset.getString(1);
+                Date date = resultset.getDate(2);
+                map.put(dep, date);
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return map;
     }
 }
