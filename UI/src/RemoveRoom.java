@@ -27,6 +27,9 @@ public class RemoveRoom implements Initializable{
     @FXML ComboBox<String> comboBox;
     ArrayList<String> roomNames;
 
+    /**
+     * 
+     */
     public void remove(){
         String s = comboBox.getValue();
 
@@ -49,17 +52,21 @@ public class RemoveRoom implements Initializable{
         }
 
     }
+    
+    /**
+     * 
+     * @param event
+     * @throws IOException 
+     */
     public void backButt(ActionEvent event) throws IOException{
-        Parent backBut = FXMLLoader.load(getClass().getResource("resources/manageTimetable.fxml"));
+        Parent backBut = FXMLLoader.load(getClass().getResource("resources/homeV2.fxml"));
         Scene backButScene = new Scene(backBut);
 
         Stage backWindow = (Stage)((Node)event.getSource()).getScene().getWindow();
         backWindow.setScene(backButScene);
         backWindow.show();
     }
-    //i dint see the use for this.
-    //@FXML private TextField textfield;
-
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         DbDriver dbDriver = new DbDriver();

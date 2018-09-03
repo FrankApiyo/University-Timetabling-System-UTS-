@@ -51,7 +51,7 @@ public class RemoveLecturer implements Initializable{
         }
     }
     public void back() throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("home.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("homeV2.fxml"));
         Stage stage = (Stage)box.getParent().getScene().getWindow();
         stage.setScene(new Scene(parent));
         stage.show();

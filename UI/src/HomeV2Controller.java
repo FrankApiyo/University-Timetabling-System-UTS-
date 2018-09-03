@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import timetable.GoogleMail;
+import timetable.SendEmail;
 
 /**
  * FXML Controller class
@@ -55,7 +56,6 @@ public class HomeV2Controller implements Initializable {
      */
     @FXML
     private void show_request_req(MouseEvent event) throws IOException {
-        DynamicView.loadBorderCenter(border_pane, "reqRequest.fxml");
         DynamicView.loadBorderCenter(border_pane, "resources/reqRequest.fxml");
     }
     
@@ -72,6 +72,7 @@ public class HomeV2Controller implements Initializable {
     @FXML
     private void showReqReceived(MouseEvent event) throws IOException {
         DynamicView.loadBorderCenter(border_pane, "resources/reqRequest.fxml");
+        SendEmail.reqRequirements();
     }
 
     @FXML
@@ -92,6 +93,8 @@ public class HomeV2Controller implements Initializable {
     @FXML
     private void showSendTimetable(MouseEvent event) throws IOException {
         DynamicView.loadBorderCenter(border_pane, "resources/sendTT.fxml");
+        
+        SendEmail.sendTT();
     }
 
     @FXML
