@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="501.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SwitchRoomController">
+<VBox prefHeight="501.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SwitchRoomController">
 
     <children>
 
@@ -16,7 +16,7 @@
 
             <children>
 
-                <TableView fx:id="timetable" layoutX="30.0" layoutY="104.0" onMouseClicked="#cellClicked" prefHeight="146.0" prefWidth="876.0">
+                <TableView fx:id="timetable" layoutX="30.0" layoutY="104.0" onMouseClicked="#cellClicked" onMouseEntered="#newCellClicked" prefHeight="146.0" prefWidth="876.0">
 
                     <columns>
                         <TableColumn fx:id="dayColumn" prefWidth="75.0" text="Day" />
@@ -60,19 +60,21 @@
 
 
 
-                <Label layoutX="55.0" layoutY="359.0" text="Day" />
+                <Label layoutX="55.0" layoutY="359.0" text="Day:" />
 
-                <ComboBox fx:id="dayOfWeek" layoutX="109.0" layoutY="355.0" onAction="#onSelectDay" prefWidth="150.0" promptText="MONDAY" visibleRowCount="7" />
+                <ComboBox fx:id="dayOfWeek" layoutX="109.0" layoutY="355.0" onAction="#onSelectDay" prefWidth="150.0" visibleRowCount="7" />
 
-                <ComboBox fx:id="availableRooms" layoutX="549.0" layoutY="355.0" onAction="#availableRoomClicked" prefWidth="150.0" />
+                <ComboBox fx:id="availableRooms" layoutX="721.0" layoutY="355.0" onAction="#availableRoomClicked" prefWidth="150.0" />
 
-                <Label layoutX="442.0" layoutY="359.0" text="Available Rooms" />
+                <Label layoutX="609.0" layoutY="359.0" text="Available Rooms:" />
 
                 <Button layoutX="154.0" layoutY="412.0" mnemonicParsing="false" onAction="#backButt" style="-fx-background-color: #ff5252;" text="CANCEL" textFill="WHITE" />
 
                 <Button layoutX="601.0" layoutY="412.0" mnemonicParsing="false" text="OKAY" />
                 <ComboBox fx:id="year" editable="true" layoutX="653.0" layoutY="43.0" onAction="#selectYear" prefWidth="150.0" promptText="" />
                 <Label layoutX="598.0" layoutY="47.0" text="Year" />
+            <ComboBox fx:id="timeSlot" layoutX="403.0" layoutY="355.0" onAction="#onSelectTimeSlot" prefWidth="150.0" />
+            <Label layoutX="331.0" layoutY="359.0" text="time slots:" />
 
             </children>
 
