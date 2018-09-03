@@ -17,6 +17,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import timetable.*;
@@ -24,10 +25,17 @@ import timetable.Day;
 
 public class SwitchRoomController implements Initializable {
     ArrayList<Room> aRooms = new ArrayList<>();
+    ArrayList<Room> rooms = new ArrayList<>();
     private int d;
+    private int ts;
     private int s;
+    String data;
+    int row;
+    int newRow;
+
     private ArrayList<Course> courses;
     @FXML public ComboBox<String> dayOfWeek;
+    @FXML public ComboBox<String> timeSlot;
     @FXML public ComboBox<String> availableRooms;
     @FXML public ComboBox<String> course;
     @FXML public ComboBox<Integer> year;
@@ -53,6 +61,8 @@ public class SwitchRoomController implements Initializable {
 
     ArrayList<String> l = new ArrayList<>();
 
+    ArrayList<String> timeSlots = new ArrayList<>();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         columns.add(c1);
@@ -74,6 +84,21 @@ public class SwitchRoomController implements Initializable {
         l.add("Friday");
 
         dayOfWeek.setItems(FXCollections.observableList(l));
+
+        timeSlots.add("7:00-8:00");
+        timeSlots.add("8:00-9:00");
+        timeSlots.add("9:00-10:00");
+        timeSlots.add("10:00-11:00");
+        timeSlots.add("11:00-12:00");
+        timeSlots.add("12:00-13:00");
+        timeSlots.add("13:00-14:00");
+        timeSlots.add("14:00-15:00");
+        timeSlots.add("15:00-16:00");
+        timeSlots.add("16:00-17:00");
+        timeSlots.add("17:00-18:00");
+
+
+        timeSlot.setItems(FXCollections.observableList(timeSlots));
 
         DbDriver dbDriver = new DbDriver();
         courses = dbDriver.getCourses();
@@ -176,14 +201,17 @@ public class SwitchRoomController implements Initializable {
         timetable.getColumns().get(0).setVisible(true);
     }
     public void cellClicked(){
+
+        timetable.getSelectionModel().setCellSelectionEnabled(true);
+
         TablePosition pos = timetable.getSelectionModel().getSelectedCells().get(0);
-        int row = pos.getRow();
+        row = pos.getRow();
         // Item here is the table view type:
         //Item item = tbvCitation.getItems().get(row);
         //int col = 2;
         TableColumn col = pos.getTableColumn();
         // this gives the value in the selected cell:
-        String data = (String) col.getCellObservableValue(row).getValue();
+         data = (String) col.getCellObservableValue(row).getValue();
         System.out.println(data);
         //s = col.getColumns().indexOf(col);
         String title = col.getText();
@@ -194,21 +222,51 @@ public class SwitchRoomController implements Initializable {
         //System.out.println("s: "+s);
     }
     public void onSelectDay(){
-        //add the available room list to the availableRooms combobox
+
         d = l.indexOf(dayOfWeek.getValue());
+    }
+
+    public void onSelectTimeSlot(){
+        ts = timeSlots.indexOf(timeSlot.getValue());
 
         AlgoDriver driver = new AlgoDriver();
-        aRooms = driver.getAvailableRooms(s, d);
+        aRooms = driver.getAvailableRooms(ts, d);
         ArrayList<String> aRoomNames = new ArrayList<>();
+
         for(int i = 0; i < aRooms.size(); i++){
             aRoomNames.add(aRooms.get(i).getName());
         }
         availableRooms.setItems(FXCollections.observableList(aRoomNames));
     }
+
+
+
+    public void newCellClicked(){
+
+        timetable.getSelectionModel().setCellSelectionEnabled(true);
+
+        TablePosition pos2 = timetable.getSelectionModel().getSelectedCells().get(0);
+        newRow = pos2.getRow();
+
+        TableColumn col2 = pos2.getTableColumn();
+
+        data = (String) col2.getCellObservableValue(row).getValue();
+        //unfinished
+
+    }
+    public void assignNewRoom(Clss c){
+        //trial
+
+        data = c.toString();
+    }
+
     public void availableRoomClicked(){
+
+       // assignNewRoom();
 
     }
     public void okButtonClicked(){
         //
     }
+
 }
