@@ -28,12 +28,15 @@ public class AlgoDriver{
         saveRooms();
         generated = true;
     }
-    public void getAvailableRooms(){
+    public ArrayList<Room> getAvailableRooms(int s, int d){
+        ArrayList<Room> r = new ArrayList<>();
         for(int i = 0; i < rooms.size(); i++){
-           // if (assignRoom(Clss ) == null){
-
-            }
+            Clss[][] days = rooms.get(i).getDays();
+                if(days[d][s] == null)
+                    r.add(rooms.get(i));
+        }
         //}
+        return r;
     }
 
     private void assignRoom(Clss c){
@@ -103,7 +106,7 @@ public class AlgoDriver{
             ex.printStackTrace();
         }
     }
-    private  void getRoomFromFile(){
+    public  void getRoomFromFile(){
         //restore the timetable from file.
         try(
                 ObjectInputStream fileOut = new ObjectInputStream(new FileInputStream("timetable.dat"))

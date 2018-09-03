@@ -21,6 +21,6 @@ public class Course implements Serializable{
     return studentNumber;
   }
   public boolean equals(Course c){
-    return (c.getName().trim().equalsIgnoreCase(this.getName().trim()) && c.getYear() == this.getYear());
+      return (c.getName().trim().equalsIgnoreCase(this.getName().trim()) && c.getYear() == this.getYear());
   }
 }

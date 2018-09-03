@@ -15,16 +15,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import timetable.AlgoDriver;
-import timetable.Course;
+import timetable.*;
 import timetable.Day;
-import timetable.DbDriver;
 
 public class SwitchRoomController implements Initializable {
+    ArrayList<Room> aRooms = new ArrayList<>();
+    private int d;
+    private int s;
     private ArrayList<Course> courses;
+    @FXML public ComboBox<String> dayOfWeek;
+    @FXML public ComboBox<String> availableRooms;
     @FXML public ComboBox<String> course;
     @FXML public ComboBox<Integer> year;
     @FXML public TableColumn<Day, String> c11;
@@ -39,14 +43,37 @@ public class SwitchRoomController implements Initializable {
     @FXML public TableColumn<Day, String> c2;
     @FXML public TableColumn<Day, String> c1;
 
+    ArrayList<TableColumn<Day, String>>  columns = new ArrayList<>();
+
     @FXML
     private TableView<Day> timetable;
 
     @FXML
     private TableColumn<Day, String> dayColumn;
 
+    ArrayList<String> l = new ArrayList<>();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        columns.add(c1);
+        columns.add(c2);
+        columns.add(c3);
+        columns.add(c4);
+        columns.add(c5);
+        columns.add(c6);
+        columns.add(c7);
+        columns.add(c8);
+        columns.add(c9);
+        columns.add(c10);
+        columns.add(c11);
+
+        l.add("Monday");
+        l.add("Tuesday");
+        l.add("Wednesday");
+        l.add("Thurday");
+        l.add("Friday");
+
+        dayOfWeek.setItems(FXCollections.observableList(l));
 
         DbDriver dbDriver = new DbDriver();
         courses = dbDriver.getCourses();
@@ -147,5 +174,41 @@ public class SwitchRoomController implements Initializable {
 
         timetable.getColumns().get(0).setVisible(false);
         timetable.getColumns().get(0).setVisible(true);
+    }
+    public void cellClicked(){
+        TablePosition pos = timetable.getSelectionModel().getSelectedCells().get(0);
+        int row = pos.getRow();
+        // Item here is the table view type:
+        //Item item = tbvCitation.getItems().get(row);
+        //int col = 2;
+        TableColumn col = pos.getTableColumn();
+        // this gives the value in the selected cell:
+        String data = (String) col.getCellObservableValue(row).getValue();
+        System.out.println(data);
+        //s = col.getColumns().indexOf(col);
+        String title = col.getText();
+        for(int i = 0; i < columns.size(); i++){
+            if(columns.get(i).getText() == title)
+                s = i;
+        }
+        //System.out.println("s: "+s);
+    }
+    public void onSelectDay(){
+        //add the available room list to the availableRooms combobox
+        d = l.indexOf(dayOfWeek.getValue());
+
+        AlgoDriver driver = new AlgoDriver();
+        aRooms = driver.getAvailableRooms(s, d);
+        ArrayList<String> aRoomNames = new ArrayList<>();
+        for(int i = 0; i < aRooms.size(); i++){
+            aRoomNames.add(aRooms.get(i).getName());
+        }
+        availableRooms.setItems(FXCollections.observableList(aRoomNames));
+    }
+    public void availableRoomClicked(){
+
+    }
+    public void okButtonClicked(){
+        //
     }
 }
