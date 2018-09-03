@@ -22,20 +22,23 @@ class DbConnect
         $this->connect();
 
     }
+
 //connect to database
-    function connect() {
-        try{
-        $this->pdo = new PDO('mysql:host='.$this->host.';dbname='.$this->dbName, $this->dbUser);
-        }catch (PDOException $exception){
+    function connect()
+    {
+        try {
+            $this->pdo = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->dbName, $this->dbUser);
+        } catch (PDOException $exception) {
             echo $exception->getMessage();
         }
     }
 
-    function prepareSmt($smt){
-        try{
+    function prepareSmt($smt)
+    {
+        try {
             $smt = $this->pdo->prepare($smt);
             return $smt;
-        }catch (PDOException $exception){
+        } catch (PDOException $exception) {
             echo $exception->getMessage();
         }
 
