@@ -7,7 +7,7 @@
  */
 
 //database configuration
-define("DB_NAME","uts");
+define("DB_NAME","utsbase");
 define("DB_USER","root");
 define("DB_PASSWORD","");
 define("DB_HOST","localhost");
