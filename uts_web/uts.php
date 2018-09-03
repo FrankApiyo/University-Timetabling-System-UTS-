@@ -53,9 +53,9 @@ session_start();
         <tr>
           <td><input name="unit_name" type="text" id="unit_name" required></td>
           <td><input type="text" name="unit_code" required></td>
-          <td><input type="number" name="unit_cf" required></td>
-          <td><input type="number" name="lecture" required></td>
-          <td><input type="number" name="practical" required></td>
+          <td><input type="number" name="unit_cf" step="0.01" required></td>
+          <td><input type="number" name="lecture" step="0.01" required></td>
+          <td><input type="number" name="practical" step="0.01" required></td>
           <td><input type="number" name="students" required></td>
           <td><input type="text" name="lec_name" required></td>
         </tr>
