@@ -7,8 +7,8 @@ import java.util.HashMap;
 
 public class DbDriver {
     private static final String dBase = "jdbc:mysql://localhost/utsbase";
-    private static final String name = "brian";
-    private  static final String pwd = "23brian19";
+    private static final String name = "root";
+    private  static final String pwd = "Frankline";
     public Connection connectDb(String database, String username, String password){
         Connection connection = null;
         try{

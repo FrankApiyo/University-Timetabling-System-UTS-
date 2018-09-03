@@ -153,4 +153,21 @@ public class AlgoDriver{
         }
         return day;
     }
+    public String getTimetable(Course c, int year){
+        String table = "\t7-8\t8-9\t9-10\t10-11\t11-12\t12-13\t13-14\t15-16\t16-17\t17-18\t18-19\n";
+        for(Room r: rooms){
+            //find classes for c in rooms
+            Clss[][] days = r.getDays();
+            //loop through the days
+            for(int i = 0; i < days.length; i++){
+                switch(i){
+                    case 0: table += "Monday\t"; break;
+                    case 1: table += "Tuesday\t"; break;
+                    case 2: table += "Wednesday\t"; break;
+                    case 3: table += "Thursday\t"; break;
+                }
+            }
+        }
+        return null;
+    }
 }
