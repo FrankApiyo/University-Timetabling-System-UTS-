@@ -1,6 +1,7 @@
 package timetable;
 
 import java.util.*;
+import javafx.scene.control.Alert;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.mail.internet.MimeMessage;
@@ -43,9 +44,18 @@ public class SendEmail{
            transport.connect(host, from, pass);
            transport.sendMessage(msg, msg.getAllRecipients());
            transport.close();
-           System.out.println("message send successfully");
+           
+           Alert al = new Alert(Alert.AlertType.INFORMATION);
+           al.setTitle("Success");
+           al. setContentText("TimeTable sent Successfully");
+           al.show();
         }catch(Exception ex)
         {
+            Alert net = new Alert(Alert.AlertType.WARNING);
+            net.setTitle("Warning!");
+            net.setHeaderText(ex.toString());
+            net.setContentText("Please Check your internet Connection and Try again");
+            net.show();
             System.out.println(ex);
         }
 
@@ -85,7 +95,11 @@ public class SendEmail{
            transport.connect(host, from, pass);
            transport.sendMessage(msg, msg.getAllRecipients());
            transport.close();
-           System.out.println("message send successfully");
+           
+           Alert al = new Alert(Alert.AlertType.INFORMATION);
+           al.setTitle("Success");
+           al. setContentText("Message sent Successfully");
+           al.show();
         }catch(Exception ex)
         {
             System.out.println(ex);
