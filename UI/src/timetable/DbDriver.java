@@ -1,10 +1,9 @@
 package timetable;
-import javafx.scene.control.Alert;
 
-import javax.lang.model.type.ArrayType;
+import javafx.scene.control.Alert;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
 
 public class DbDriver {
     private static final String dBase = "jdbc:mysql://localhost/utsbase";
@@ -43,9 +42,9 @@ public class DbDriver {
             //TODOne -- Ensure that there are foreighn key constraints such that no course can be in Class table thats not in Course table.
             Statement statement = connectDb(dBase, name, pwd).createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT Lecturer.name, Unit.name, Unit.code, Course.name, Course.year, Course.number, Lecturer.regNo, Lecturer.department, Unit.cF FROM"+
-                                                        "(((Lecturer INNER JOIN Class ON Lecturer.regNo = Class.lec_reg_no)" +
-                                                        "INNER JOIN Unit ON Class.unit_code = Unit.code)" +
-                                                        "INNER JOIN Course ON Course.code = Class.course_code)");
+                    "(((Lecturer INNER JOIN Class ON Lecturer.regNo = Class.lec_reg_no)" +
+                    "INNER JOIN Unit ON Class.unit_code = Unit.code)" +
+                    "INNER JOIN Course ON Course.code = Class.course_code)");
             while(resultSet.next()){
                 String lecName = resultSet.getString(1);
                 String unitName = resultSet.getString(2);
@@ -246,7 +245,36 @@ public class DbDriver {
         }
         return departments;
     }
-    
+    public boolean checkRequirementsAvailable(){
+        //TODOne -- return true if at least one entry and false otherwise
+        boolean empty = false;
+        try{
+            Statement statement = connectDb(dBase, name, pwd).createStatement();
+            ResultSet resultset = statement.executeQuery("SELECT * FROM RequirementsReceived");
+            while(resultset.next()){
+                empty = true;
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return empty;
+    }
+    public HashMap<String, Date> getRequirementDates(){
+        //TODOne -- return a hashmap containing all the department - date pairs
+        HashMap<String, Date> map = new HashMap<>();
+        try{
+            Statement statement = connectDb(dBase, name, pwd).createStatement();
+            ResultSet resultset = statement.executeQuery("SELECT * FROM RequirementsReceived");
+            while(resultset.next()){
+                String dep = resultset.getString(1);
+                Date date = resultset.getDate(2);
+                map.put(dep, date);
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return map;
+    }
     public String getEmail() {
         String ieoMail;
         try {
@@ -290,3 +318,4 @@ public class DbDriver {
         }
     }
 }
+
