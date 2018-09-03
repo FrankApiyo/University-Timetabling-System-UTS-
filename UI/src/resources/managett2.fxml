@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Tab?>
+
+<JFXTabPane prefHeight="400.0" prefWidth="600.0" stylesheets="@tabPaneStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManageTT2">
+    <Tab fx:id="room_tab" closable="false" text="Rooms" />
+    <Tab fx:id="switch_room_tab" closable="false" text="Switch Room" />
+    <Tab fx:id="lecturer_tab" closable="false" text="Lecturers" />
+
+</JFXTabPane>
