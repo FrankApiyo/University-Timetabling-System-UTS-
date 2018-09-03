@@ -37,7 +37,7 @@ public class RemoveLecturer implements Initializable{
             alert.showAndWait();
         }else{
             DbDriver dbDriver = new DbDriver();
-            boolean removed = dbDriver.removeLecturer(list.get(lecNameList.indexOf(cBoxVal)));
+            boolean removed = dbDriver.removeLecturer("null");
             if(removed) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Success");

@@ -50,7 +50,6 @@ public class Login implements Initializable {
             Stage stage = (Stage) username.getScene().getWindow();
             stage.setScene(scene);
             stage.setMaximized(true);
-            stage.setFullScreen(true);
         } else {
             //show warning.
             login_text.setText("Incorrect Credentials");

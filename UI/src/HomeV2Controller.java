@@ -87,7 +87,7 @@ public class HomeV2Controller implements Initializable {
 
     @FXML
     private void showManageTimetable(MouseEvent event) throws IOException {
-        DynamicView.loadBorderCenter(border_pane, "resources/manageTimetable.fxml");
+        DynamicView.loadBorderCenter(border_pane, "resources/managett2.fxml");
     }
 
     @FXML

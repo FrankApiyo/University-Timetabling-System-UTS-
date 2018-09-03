@@ -8,8 +8,8 @@ import java.util.Collection;
 
 public class DbDriver {
     private static final String dBase = "jdbc:mysql://localhost/utsbase";
-    private static final String name = "root";
-    private  static final String pwd = "";
+    private static final String name = "brian";
+    private  static final String pwd = "23brian19";
     public Connection connectDb(String database, String username, String password){
         Connection connection = null;
         try{
@@ -173,10 +173,10 @@ public class DbDriver {
             return null;
         }
     }
-    public boolean removeLecturer(Lecturer l){
+    public boolean removeLecturer(String regNo){
         try{
             Statement statement = connectDb(dBase, name, pwd).createStatement();
-            statement.executeUpdate("DELETE FROM Lecturer WHERE regNo = '"+l.getRegNo()+"'");
+            statement.executeUpdate("DELETE FROM Lecturer WHERE regNo = '"+regNo+"'");
             return true;
         }catch(SQLException ex){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -260,5 +260,33 @@ public class DbDriver {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public ArrayList<IEO> getIEO (){
+        ArrayList<IEO> ieoList = new ArrayList<>();
+        try {
+            Statement statement = connectDb(dBase, name, pwd).createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM `ieo`;");
+            while (resultSet.next()){
+                ieoList.add(new IEO(resultSet.getString("department"),
+                        resultSet.getString("email"),
+                        resultSet.getString("phone"),
+                        resultSet.getString("fname"),
+                        resultSet.getString("lname"),
+                        resultSet.getString("password")));
+            } }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return  ieoList;
+    }
+
+    public void removeIEO(String department) {
+        try {
+        Statement statement = connectDb(dBase, name, pwd).createStatement();
+        statement.executeUpdate("DELETE FROM ieo WHERE department = '"+department+"'");
+    } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
