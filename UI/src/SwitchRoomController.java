@@ -38,7 +38,7 @@ public class SwitchRoomController implements Initializable {
     @FXML public ComboBox<String> timeSlot;
     @FXML public ComboBox<String> availableRooms;
     @FXML public ComboBox<String> course;
-    @FXML public ComboBox<Integer> year;
+    @FXML public ComboBox<String> year;
     @FXML public TableColumn<Day, String> c11;
     @FXML public TableColumn<Day, String> c10;
     @FXML public TableColumn<Day, String> c9;
@@ -123,10 +123,10 @@ public class SwitchRoomController implements Initializable {
     }
     public void selectCourse(){
         String courseName = course.getValue();
-        ArrayList<Integer> courseYears = new ArrayList<>();
+        ArrayList<String> courseYears = new ArrayList<>();
         for(Course c : courses)
             if(c.getName().compareTo(courseName) == 0)
-                courseYears.add(c.getYear());
+                courseYears.add(c.getYear()+"");
         year.setItems(FXCollections.observableList(courseYears));
     }
     public void selectYear(){
@@ -139,7 +139,7 @@ public class SwitchRoomController implements Initializable {
         int courseYear = 0;
        try{if(year.getValue() == null)
             return;
-        else courseYear = year.getValue();
+        else courseYear = Integer.parseInt(year.getValue());
        }catch (ClassCastException e){
 
        }
@@ -240,30 +240,28 @@ public class SwitchRoomController implements Initializable {
     }
 
 
-
-    public void newCellClicked(){
-
-        timetable.getSelectionModel().setCellSelectionEnabled(true);
-
-        TablePosition pos2 = timetable.getSelectionModel().getSelectedCells().get(0);
-        newRow = pos2.getRow();
-
-        TableColumn col2 = pos2.getTableColumn();
-
-        data = (String) col2.getCellObservableValue(row).getValue();
-        //unfinished
-
-    }
-    public void assignNewRoom(Clss c){
-        //trial
-
-        data = c.toString();
-    }
-
     public void availableRoomClicked(){
-
        // assignNewRoom();
-
+        Room r = null;
+        for(Room rm: aRooms)
+            if(rm.getName().equalsIgnoreCase(availableRooms.getValue()))
+                r = rm;
+        //get Course
+        AlgoDriver driver = new AlgoDriver();
+        ArrayList<Room> rList = driver.getRooms();
+        //get time and day (s and row)
+        //switch with new room (ts and d)
+        for(Room roomInList: rList){
+            Clss[][] clss = roomInList.getDays();
+                if(clss[row][s] != null)
+                    if(clss[row][s].getC().getName().equalsIgnoreCase(course.getValue()))
+                        if(clss[row][s].getC().getYear() == Integer.parseInt(year.getValue())){
+                        r.getDays()[d][ts] = clss[row][s];
+                        clss[row][s] = null;
+                        break;
+                    }
+        }
+        selectYear();
     }
     public void okButtonClicked(){
         //

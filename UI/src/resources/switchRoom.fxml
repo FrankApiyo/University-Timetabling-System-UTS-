@@ -16,7 +16,7 @@
 
             <children>
 
-                <TableView fx:id="timetable" layoutX="30.0" layoutY="104.0" onMouseClicked="#cellClicked" onMouseEntered="#newCellClicked" prefHeight="146.0" prefWidth="876.0">
+                <TableView fx:id="timetable" layoutX="30.0" layoutY="104.0" onMouseClicked="#cellClicked"  prefHeight="146.0" prefWidth="876.0">
 
                     <columns>
                         <TableColumn fx:id="dayColumn" prefWidth="75.0" text="Day" />

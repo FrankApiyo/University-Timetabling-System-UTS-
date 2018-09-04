@@ -3,6 +3,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import timetable.DbDriver;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Main extends Application {
         
         stage.setScene(scene);
         stage.show();
+
     }
 
     /**
@@ -26,5 +28,4 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
 }

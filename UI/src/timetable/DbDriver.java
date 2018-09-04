@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DbDriver {
-    private static final String dBase = "jdbc:mysql://localhost/utsbase";
-    private static final String name = "root";
-    private  static final String pwd = "Frankline";
+    private static final String dBase = "jdbc:mysql://192.168.43.70/utsbase";
+    private static final String name = "Kemboi";
+    private  static final String pwd = "123456";
     public Connection connectDb(String database, String username, String password){
         Connection connection = null;
         try{
@@ -275,21 +275,34 @@ public class DbDriver {
         }
         return map;
     }
-    public String getEmail() {
-        String ieoMail;
+    public ArrayList<String> getEmail() {
+        ArrayList<String> ieoMail = new ArrayList<>();
+
         try {
             Statement statement = connectDb(dBase, name, pwd).createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT email FROM `ieo`;");
             while (resultSet.next()){
-                ieoMail = resultSet.getString(1);
-                return ieoMail;
+                ieoMail.add(resultSet.getString(1));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return ieoMail;
     }
+    public ArrayList<String> getIeoDepartment(){
+        ArrayList<String> ieoMail = new ArrayList<>();
 
+        try {
+            Statement statement = connectDb(dBase, name, pwd).createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT department FROM `ieo`;");
+            while (resultSet.next()){
+                ieoMail.add(resultSet.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ieoMail;
+    }
     public ArrayList<IEO> getIEO (){
         ArrayList<IEO> ieoList = new ArrayList<>();
         try {

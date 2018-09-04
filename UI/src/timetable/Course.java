@@ -1,5 +1,7 @@
 package timetable;
 
+import com.sun.istack.internal.Nullable;
+
 import java.io.Serializable;
 
 public class Course implements Serializable{
@@ -20,7 +22,7 @@ public class Course implements Serializable{
   public int getNumber(){
     return studentNumber;
   }
-  public boolean equals(Course c){
+  public boolean equals(@Nullable Course c){
       return (c.getName().trim().equalsIgnoreCase(this.getName().trim()) && c.getYear() == this.getYear());
   }
 }

@@ -18,9 +18,12 @@ public class AlgoDriver{
     public static void main(String[] args){
         //this method was used to test the methods in this class.
         AlgoDriver driver = new AlgoDriver();
-        System.out.println(driver.getTimetable(classes.get(0).getC()));
+        System.out.println(driver.getTimetable(classes.get(0).getC().getName(), classes.get(0).getC().getYear()));
 
         //driver.getClasses(1, new Course("COMPUTER SCIENCE", 2, 70));
+    }
+    public ArrayList<Room> getRooms(){
+        return rooms;
     }
     public void generateTimetable(){
         for(Clss c: classes) {
@@ -155,19 +158,19 @@ public class AlgoDriver{
         }
         return day;
     }
-    public String getTimetable(Course c){
-        String table = "\t7-8\t8-9\t9-10\t10-11\t11-12\t12-13\t13-14\t15-16\t16-17\t17-18\t18-19\n";
+    public String getTimetable(String s, int x){
+        String table = "\t\t7-8\t8-9\t9-10\t10-11\t11-12\t12-13\t13-14\t15-16\t16-17\t17-18\t18-19\n";
             Clss[][] days = new Clss[5][];
             for(int i = 0; i < days.length; i++)
-                days[i] = getClassDay(i, c);
+                days[i] = getClassDay(i, s, x);
             //loop through the days
             for(int i = 0; i < days.length; i++){
                 switch(i){
-                    case 0: table += "Monday\t"; break;
-                    case 1: table += "Tuesday\t"; break;
-                    case 2: table += "Wednesday\t"; break;
-                    case 3: table += "Thursday\t"; break;
-                    case 4: table += "Friday\t"; break;
+                    case 0: table += "Monday\t\t"; break;
+                    case 1: table += "Tuesday\t\t"; break;
+                    case 2: table += "Wednesday\t\t"; break;
+                    case 3: table += "Thursday\t\t"; break;
+                    case 4: table += "Friday\t\t"; break;
                 }
                 for(int j = 0; j < days[i].length; j++){
                     if(days[i][j] != null)
@@ -177,12 +180,12 @@ public class AlgoDriver{
             }
         return table;
     }
-    public Clss[] getClassDay(int d, Course c){
+    public Clss[] getClassDay(int d, String s, int x){
         Clss[] day = new Clss[11];
         for(Room r: rooms)
             for(int i = 0; i < r.getDays()[d].length; i++)
                 if(r.getDays()[d][i] != null)
-                    if(c.equals(r.getDays()[d][i].getC()))
+                    if(r.getDays()[d][i].getC().getName().equalsIgnoreCase(s) && r.getDays()[d][i].getC().getYear() == x)
                         day[i] = r.getDays()[d][i];
         return day;
     }
